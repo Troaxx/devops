@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Club Ranking System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div>test</div>
+    <header>
+        <div class="header-content">
+            <div class="header-icon">
+                <i class="fas fa-chess"></i>
+            </div>
+            <div class="header-text">
+                <h1>Chess Club Ranking System</h1>
+                <p>TP Mindsport Club - Chess Division</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showSection('create')">
+                <i class="fas fa-user-plus"></i>
+                <span>Create Account</span>
+            </button>
+            <button class="nav-btn" onclick="showSection('view')">
+                <i class="fas fa-trophy"></i>
+                <span>View Rankings</span>
+            </button>
+            <button class="nav-btn" onclick="showSection('update')">
+                <i class="fas fa-edit"></i>
+                <span>Update Scores</span>
+            </button>
+            <button class="nav-btn" onclick="showSection('delete')">
+                <i class="fas fa-user-minus"></i>
+                <span>Delete Account</span>
+            </button>
+        </div>
+    </nav>
 </body>
 </html>

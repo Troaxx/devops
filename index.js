@@ -4,9 +4,6 @@ const fs = require('fs').promises;
 
 // Import utility modules for each CRUD operation
 const CreateStudentUtil = require('./utils/CreateStudentUtil');
-const ViewRankingsUtil = require('./utils/ViewRankingsUtil');
-const UpdateScoresUtil = require('./utils/UpdateScoresUtil');
-const DeleteAccountUtil = require('./utils/DeleteAccountUtil');
 
 const app = express();
 const PORT = process.env.PORT || 5000;

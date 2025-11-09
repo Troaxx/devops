@@ -4,7 +4,7 @@ const path = require('path');
 const DB_PATH = path.join(__dirname, 'students.json');
 
 /**
- * Member A - CREATE Feature
+ * Daniella - CREATE Feature
  * Handles student account creation
  */
 

@@ -252,6 +252,16 @@ main {
     border-color: var(--gray-300);
     transform: translateY(-2px);
 }
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%);
+    color: var(--white);
+    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(239, 68, 68, 0.5);
+}
 
 /* Messages */
 .message {
@@ -586,6 +596,50 @@ tbody tr:nth-child(3) td:first-child {
     bottom: 0;
     width: 3px;
     background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+/* Warning Box */
+.warning-box {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border-left: 4px solid var(--warning);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+    color: #92400e;
+    display: flex;
+    align-items: start;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.warning-box i {
+    font-size: 1.5rem;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.checkbox-group label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: var(--gray-700);
 }
 
 /* Footer */

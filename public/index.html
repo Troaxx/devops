@@ -135,6 +135,43 @@
             </div>
             <div id="view-message" class="message"></div>
         </section>
+
+        <!-- Danish- DELETE Section -->
+        <section id="delete-section" class="content-section">
+            <div class="section-header">
+                <i class="fas fa-user-minus"></i>
+                <h2>Leave Chess Club</h2>
+            </div>
+            <div class="form-container">
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Warning:</strong> This action cannot be undone. Your account and all data will be permanently deleted.
+                    </div>
+                </div>
+
+                <form id="delete-form">
+                    <div class="form-group">
+                        <label for="delete-id">
+                            <i class="fas fa-id-card"></i>
+                            Student ID
+                        </label>
+                        <input type="text" id="delete-id" placeholder="e.g., 2403880d" required>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="confirm-delete" required>
+                        <label for="confirm-delete">I confirm that I want to delete my account</label>
+                    </div>
+
+                    <button type="submit" class="btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                        Delete Account
+                    </button>
+                </form>
+                <div id="delete-message" class="message"></div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -144,6 +181,7 @@
     <!-- Load JavaScript files -->
     <script src="js/create-student.js"></script>
     <script src="js/view-rankings.js"></script>
+    <script src="js/delete-account.js"></script>
 </body>
 <script>
     // Navigation between sections

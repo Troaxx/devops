@@ -3,7 +3,7 @@ const path = require('path');
 
 // Import utility modules for each CRUD operation
 const CreateStudentUtil = require('./utils/CreateStudentUtil');
-const ViewRankingsUtil = require('./utils/ViewRankingsUtil');
+const ViewRankingsUtil = require('./utils/DylanYeoUtil');
 
 const app = express();
 const PORT = process.env.PORT || 5000;

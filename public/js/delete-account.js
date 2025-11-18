@@ -1,5 +1,5 @@
 /**
- * Member D - DELETE Feature (Frontend)
+ * Danish - DELETE Feature (Frontend)
  * Handles student account deletion (leaving the club)
  */
 
@@ -67,7 +67,7 @@ document.getElementById('delete-form').addEventListener('submit', async (e) => {
         } else {
             showDeleteMessage(result.message, 'error');
         }
-
+     // validation 2
     } catch (error) {
         console.error('Error deleting account:', error);
         showDeleteMessage('Failed to delete account. Please try again.', 'error');

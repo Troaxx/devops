@@ -47,8 +47,8 @@ async function loadRankings() {
             if (container) container.classList.remove('updating');
             return;
         }
-
-        if (result.success && result.rankings.length <= 0) {
+        
+        if (response.status === 404) {
             tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px; color: #999;">No students found. Create accounts to see rankings.</td></tr>';
             if (container) container.classList.remove('updating');
             return;

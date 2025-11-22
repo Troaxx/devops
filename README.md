@@ -24,7 +24,7 @@ Files: `utils/DylanUtil.js`, `public/js/dylan.js`
 - Search and filter functionality
 
 ### UPDATE - Score Management (Gengyue)
-Files: `utils/UpdateStudentUtil.js`, `public/js/gengyue.js`
+Files: `utils/GengyueUtil.js`, `public/js/gengyue.js`
 
 - Secure student login system
 - Update ratings for all three chess formats
@@ -79,7 +79,7 @@ chess-club-ranking/
 ├── utils/
 │   ├── DaniellaUtil.js
 │   ├── DylanUtil.js
-│   ├── UpdateStudentUtil.js
+│   ├── GengyueUtil.js
 │   ├── DanishUtil.js
 │   └── students.json
 ├── .github/

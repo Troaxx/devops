@@ -12,10 +12,10 @@ All notable changes to the Chess Club Ranking System will be documented in this 
 
 ### Changed
 - Renamed utility files for consistency
-  - gengyueutils.js to UpdateStudentUtil.js
-  - CreateStudentUtil.js (standardized)
-  - ViewRankingsUtil.js (standardized)
-  - DeleteAccountUtil.js (standardized)
+  - gengyueutils.js to GengyueUtil.js
+  - CreateStudentUtil.js to DaniellaUtil.js
+  - ViewRankingsUtil.js to DylanUtil.js
+  - DeleteAccountUtil.js to DanishUtil.js
 
 ## [1.0.0] - 2024-11
 

@@ -6,7 +6,7 @@
 |------|---------|--------|-------|
 | Daniella | CREATE | create_daniella | DaniellaUtil.js, daniella.js |
 | Dylan | READ | read_dylan | DylanUtil.js, dylan.js |
-| Gengyue | UPDATE | update_gengyue | UpdateStudentUtil.js, gengyue.js |
+| Gengyue | UPDATE | update_gengyue | GengyueUtil.js, gengyue.js |
 | Danish | DELETE | delete_danish | DanishUtil.js, danish.js |
 
 ## Development Workflow

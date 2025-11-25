@@ -4,7 +4,7 @@ const path = require('path');
 // Import utility modules for each CRUD operation
 const CreateStudentUtil = require('./utils/DaniellaUtil');
 const ViewRankingsUtil = require('./utils/DylanUtil');
-const UpdateStudentUtil = require('./utils/GengyueUtil');
+const UpdateStudentUtil = require('./utils/UpdateStudentUtil');
 const DeleteAccountUtil = require('./utils/DanishUtil');
 
 const app = express();

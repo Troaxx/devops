@@ -2,10 +2,10 @@ const express = require('express');
 const path = require('path');
 
 // Import utility modules for each CRUD operation
-const CreateStudentUtil = require('./utils/DaniellaUtil');
-const ViewRankingsUtil = require('./utils/DylanUtil');
+const CreateStudentUtil = require('./utils/CreateStudentUtil');
+const ViewRankingsUtil = require('./utils/ViewRankingsUtil');
 const UpdateStudentUtil = require('./utils/GengyueUtil');
-const DeleteAccountUtil = require('./utils/DanishUtil');
+const DeleteAccountUtil = require('./utils/DeleteAccountUtil');
 
 const app = express();
 const PORT = process.env.PORT || 5000;

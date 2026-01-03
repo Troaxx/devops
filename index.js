@@ -28,9 +28,55 @@ app.put('/api/students/:id', UpdateStudentUtil.updateScores);
 // ===== Danish- DELETE API Endpoints =====
 app.delete('/api/students/:id', DeleteAccountUtil.deleteStudent);
 
+// ===== Test Dashboard API Endpoints =====
+const TestRunner = require('./utils/TestRunner');
+
+app.get('/api/tests/list', async (req, res) => {
+    try {
+        const result = await TestRunner.getTestList();
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+app.post('/api/tests/run', async (req, res) => {
+    res.setTimeout(600000);
+    try {
+        const { testType = 'all', withCoverage = false } = req.body;
+        const result = await TestRunner.runTests(testType, withCoverage);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+app.get('/api/tests/coverage', async (req, res) => {
+    try {
+        const result = await TestRunner.getCoverageReport();
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
 // Serve main page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Serve test dashboard
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
 // Start server

@@ -1,28 +1,23 @@
-const fs = require('fs').promises;
-const { addMember } = require('../utils/DaniellaUtil');
-// Mock the 'fs' module so we don't interact with the real file system.
-// Instead, we simulate how readFile and writeFile should behave.
+const CreateStudentUtil = require('../../../utils/DaniellaUtil');
+
+// Mock the fs module
 jest.mock('fs', () => ({
   promises: {
     readFile: jest.fn(),
-    writeFile: jest.fn(),
+    writeFile: jest.fn()
   }
 }));
-describe('Unit Tests for Utils', () => {
-  // Reset mocks before each test to avoid "leaking" state between tests
+
+const fs = require('fs').promises;
+
+describe('DaniellaUtil - Backend Unit Tests', () => {
+  let mockReq;
+  let mockRes;
+
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-  it ('addMember should add a member', async () => {
-    const req = {
-      body: {
-        id: '2403880d',
-        rapid: 1200,
-        blitz: 1150,
-        bullet: 1100
-      }
-    };
-    const res = {
+
+    mockRes = {
       statusCode: null,
       responseData: null,
       status: function (code) {
@@ -34,254 +29,380 @@ describe('Unit Tests for Utils', () => {
         return this;
       }
     };
-
-    await CreateStudentUtil.createStudent(req, res);
-
-    expect(res.statusCode).toBe(201);
-    expect(res.responseData.success).toBe(true);
-    expect(res.responseData.student.id).toBe(testId);
-    expect(res.responseData.student.rapid).toBe(1200);
-    expect(res.responseData.student.blitz).toBe(1150);
-    expect(res.responseData.student.bullet).toBe(1100);
-    expect(res.responseData.student.createdAt).toBeDefined();
-
-    const fileData = await fs.readFile(DB_PATH, 'utf8');
-    const students = JSON.parse(fileData);
-    expect(students.students.length).toBe(1);
-    expect(students.students[0].id).toBe(testId);
-    expect(students.students[0].rapid).toBe(1200);
-    expect(students.students[0].blitz).toBe(1150);
-    expect(students.students[0].bullet).toBe(1100);
-  });
-});
-
-const DB_PATH = path.join(__dirname, '../../../utils/students.json');
-const BACKUP_PATH = path.join(__dirname, '../../../utils/students.backup.json');
-
-test.describe('DaniellaUtil - Backend Unit Tests', () => {
-  let originalData;
-
-  test.beforeEach(async () => {
-    try {
-      originalData = await fs.readFile(DB_PATH, 'utf8');
-    } catch (error) {
-      originalData = JSON.stringify({ students: [] }, null, 2);
-      await fs.writeFile(DB_PATH, originalData);
-    }
-    await fs.writeFile(BACKUP_PATH, originalData);
-    await fs.writeFile(DB_PATH, JSON.stringify({ students: [] }, null, 2));
   });
 
-  test.afterEach(async () => {
-    if (originalData) {
-      try {
-        await fs.writeFile(DB_PATH, originalData);
-      } catch (error) {
-      }
-    }
-    try {
-      await fs.unlink(BACKUP_PATH);
-    } catch (error) {
-    }
-  });
+  describe('createStudent - Validation Tests', () => {
+    test('should return 400 for missing required fields (empty body)', async () => {
+      mockReq = { body: {} };
 
-  test('should validate missing required fields', async () => {
-    const req = {
-      body: {}
-    };
-    const res = {
-      statusCode: null,
-      responseData: null,
-      status: function (code) {
-        this.statusCode = code;
-        return this;
-      },
-      json: function (data) {
-        this.responseData = data;
-        return this;
-      }
-    };
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
 
-    await CreateStudentUtil.createStudent(req, res);
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Missing required fields');
+    });
 
-    expect(res.statusCode).toBe(400);
-    expect(res.responseData.success).toBe(false);
-    expect(res.responseData.message).toContain('Missing required fields');
-  });
+    test('should return 400 for missing id field', async () => {
+      mockReq = {
+        body: {
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
 
-  test('should validate ID format', async () => {
-    const req = {
-      body: {
-        id: 'invalid-id',
-        rapid: 1200,
-        blitz: 1150,
-        bullet: 1100
-      }
-    };
-    const res = {
-      statusCode: null,
-      responseData: null,
-      status: function (code) {
-        this.statusCode = code;
-        return this;
-      },
-      json: function (data) {
-        this.responseData = data;
-        return this;
-      }
-    };
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
 
-    await CreateStudentUtil.createStudent(req, res);
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Missing required fields');
+    });
 
-    expect(res.statusCode).toBe(400);
-    expect(res.responseData.success).toBe(false);
-    expect(res.responseData.message).toContain('Invalid ID format');
-  });
+    test('should return 400 for missing rapid score', async () => {
+      mockReq = {
+        body: {
+          id: '2403880d',
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
 
-  test('should validate score ranges', async () => {
-    const req = {
-      body: {
-        id: '2403880d',
-        rapid: 3500,
-        blitz: 1150,
-        bullet: 1100
-      }
-    };
-    const res = {
-      statusCode: null,
-      responseData: null,
-      status: function (code) {
-        this.statusCode = code;
-        return this;
-      },
-      json: function (data) {
-        this.responseData = data;
-        return this;
-      }
-    };
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
 
-    await CreateStudentUtil.createStudent(req, res);
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Missing required fields');
+    });
 
-    expect(res.statusCode).toBe(400);
-    expect(res.responseData.success).toBe(false);
-    expect(res.responseData.message).toContain('Invalid scores');
-  });
+    test('should return 400 for invalid ID format (too short)', async () => {
+      mockReq = {
+        body: {
+          id: '123456a',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
 
-  test('should validate duplicate student ID', async () => {
-    const existingStudents = {
-      students: [
-        {
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid ID format');
+    });
+
+    test('should return 400 for invalid ID format (wrong letter suffix)', async () => {
+      mockReq = {
+        body: {
+          id: '2403880z',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid ID format');
+    });
+
+    test('should return 400 for invalid ID format (no letter suffix)', async () => {
+      mockReq = {
+        body: {
+          id: '24038801',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid ID format');
+    });
+
+    test('should return 400 for scores above 3000', async () => {
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: 3500,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid scores');
+    });
+
+    test('should return 400 for negative scores', async () => {
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: -100,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid scores');
+    });
+
+    test('should return 400 for blitz score out of range', async () => {
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: 1200,
+          blitz: 5000,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid scores');
+    });
+
+    test('should return 400 for bullet score out of range', async () => {
+      mockReq = {
+        body: {
           id: '2403880d',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100,
-          createdAt: '2025-01-01T00:00:00Z'
+          bullet: -50
         }
-      ]
-    };
+      };
 
-    await fs.writeFile(DB_PATH, JSON.stringify(existingStudents, null, 2));
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
 
-    const req = {
-      body: {
-        id: '2403880d',
-        rapid: 1200,
-        blitz: 1150,
-        bullet: 1100
-      }
-    };
-    const res = {
-      statusCode: null,
-      responseData: null,
-      status: function (code) {
-        this.statusCode = code;
-        return this;
-      },
-      json: function (data) {
-        this.responseData = data;
-        return this;
-      }
-    };
-
-    await CreateStudentUtil.createStudent(req, res);
-
-    expect(res.statusCode).toBe(409);
-    expect(res.responseData.success).toBe(false);
-    expect(res.responseData.message).toContain('already exists');
+      expect(mockRes.statusCode).toBe(400);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('Invalid scores');
+    });
   });
 
-  test('should create student successfully and write to JSON file', async () => {
-    const testId = '2409999a';
-    const req = {
-      body: {
-        id: testId,
-        rapid: 1200,
-        blitz: 1150,
-        bullet: 1100
-      }
-    };
-    const res = {
-      statusCode: null,
-      responseData: null,
-      status: function (code) {
-        this.statusCode = code;
-        return this;
-      },
-      json: function (data) {
-        this.responseData = data;
-        return this;
-      }
-    };
+  describe('createStudent - Duplicate Detection Tests', () => {
+    test('should return 409 for duplicate student ID', async () => {
+      const existingStudents = {
+        students: [
+          {
+            id: '2403880d',
+            rapid: 1200,
+            blitz: 1150,
+            bullet: 1100,
+            createdAt: '2025-01-01T00:00:00Z'
+          }
+        ]
+      };
 
-    await CreateStudentUtil.createStudent(req, res);
+      fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
 
-    expect(res.statusCode).toBe(201);
-    expect(res.responseData.success).toBe(true);
-    expect(res.responseData.student.id).toBe(testId);
-    expect(res.responseData.student.rapid).toBe(1200);
-    expect(res.responseData.student.blitz).toBe(1150);
-    expect(res.responseData.student.bullet).toBe(1100);
-    expect(res.responseData.student.createdAt).toBeDefined();
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: 1300,
+          blitz: 1250,
+          bullet: 1200
+        }
+      };
 
-    const fileData = await fs.readFile(DB_PATH, 'utf8');
-    const students = JSON.parse(fileData);
-    expect(students.students.length).toBe(1);
-    expect(students.students[0].id).toBe(testId);
-    expect(students.students[0].rapid).toBe(1200);
-    expect(students.students[0].blitz).toBe(1150);
-    expect(students.students[0].bullet).toBe(1100);
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(409);
+      expect(mockRes.responseData.success).toBe(false);
+      expect(mockRes.responseData.message).toContain('already exists');
+    });
   });
 
-  test('should handle file read errors gracefully', async () => {
-    try {
-      await fs.unlink(DB_PATH);
-    } catch (error) {
-    }
+  describe('createStudent - Success Tests', () => {
+    test('should create student successfully with valid data', async () => {
+      const existingStudents = { students: [] };
+      fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
+      fs.writeFile.mockResolvedValue(undefined);
 
-    const req = {
-      body: {
-        id: '2403880d',
-        rapid: 1200,
-        blitz: 1150,
-        bullet: 1100
+      mockReq = {
+        body: {
+          id: '2409999a',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(201);
+      expect(mockRes.responseData.success).toBe(true);
+      expect(mockRes.responseData.student.id).toBe('2409999a');
+      expect(mockRes.responseData.student.rapid).toBe(1200);
+      expect(mockRes.responseData.student.blitz).toBe(1150);
+      expect(mockRes.responseData.student.bullet).toBe(1100);
+      expect(mockRes.responseData.student.createdAt).toBeDefined();
+      expect(fs.writeFile).toHaveBeenCalled();
+    });
+
+    test('should handle boundary value 0 for scores', async () => {
+      const existingStudents = { students: [] };
+      fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
+      fs.writeFile.mockResolvedValue(undefined);
+
+      mockReq = {
+        body: {
+          id: '2409999b',
+          rapid: 0,
+          blitz: 0,
+          bullet: 0
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(201);
+      expect(mockRes.responseData.success).toBe(true);
+      expect(mockRes.responseData.student.rapid).toBe(0);
+      expect(mockRes.responseData.student.blitz).toBe(0);
+      expect(mockRes.responseData.student.bullet).toBe(0);
+    });
+
+    test('should handle boundary value 3000 for scores', async () => {
+      const existingStudents = { students: [] };
+      fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
+      fs.writeFile.mockResolvedValue(undefined);
+
+      mockReq = {
+        body: {
+          id: '2409999c',
+          rapid: 3000,
+          blitz: 3000,
+          bullet: 3000
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(201);
+      expect(mockRes.responseData.success).toBe(true);
+      expect(mockRes.responseData.student.rapid).toBe(3000);
+      expect(mockRes.responseData.student.blitz).toBe(3000);
+      expect(mockRes.responseData.student.bullet).toBe(3000);
+    });
+
+    test('should parse string numbers correctly', async () => {
+      const existingStudents = { students: [] };
+      fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
+      fs.writeFile.mockResolvedValue(undefined);
+
+      mockReq = {
+        body: {
+          id: '2409999d',
+          rapid: '1200',
+          blitz: '1150',
+          bullet: '1100'
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(201);
+      expect(mockRes.responseData.success).toBe(true);
+      expect(typeof mockRes.responseData.student.rapid).toBe('number');
+      expect(typeof mockRes.responseData.student.blitz).toBe('number');
+      expect(typeof mockRes.responseData.student.bullet).toBe('number');
+    });
+
+    test('should accept all valid ID suffixes (a-e)', async () => {
+      const validSuffixes = ['a', 'b', 'c', 'd', 'e'];
+
+      for (const suffix of validSuffixes) {
+        const existingStudents = { students: [] };
+        fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
+        fs.writeFile.mockResolvedValue(undefined);
+
+        mockReq = {
+          body: {
+            id: `2403880${suffix}`,
+            rapid: 1200,
+            blitz: 1150,
+            bullet: 1100
+          }
+        };
+
+        await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+        expect(mockRes.statusCode).toBe(201);
+        expect(mockRes.responseData.success).toBe(true);
       }
-    };
-    const res = {
-      statusCode: null,
-      responseData: null,
-      status: function (code) {
-        this.statusCode = code;
-        return this;
-      },
-      json: function (data) {
-        this.responseData = data;
-        return this;
-      }
-    };
+    });
+  });
 
-    await CreateStudentUtil.createStudent(req, res);
+  describe('createStudent - Error Handling Tests', () => {
+    test('should return 500 when file read fails', async () => {
+      fs.readFile.mockRejectedValue(new Error('File not found'));
 
-    expect(res.statusCode).toBe(500);
-    expect(res.responseData.success).toBe(false);
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(500);
+      expect(mockRes.responseData.success).toBe(false);
+    });
+
+    test('should return 500 when file write fails', async () => {
+      const existingStudents = { students: [] };
+      fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
+      fs.writeFile.mockRejectedValue(new Error('Write permission denied'));
+
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(500);
+      expect(mockRes.responseData.success).toBe(false);
+    });
+
+    test('should return 500 when JSON parsing fails', async () => {
+      fs.readFile.mockResolvedValue('invalid json');
+
+      mockReq = {
+        body: {
+          id: '2403880d',
+          rapid: 1200,
+          blitz: 1150,
+          bullet: 1100
+        }
+      };
+
+      await CreateStudentUtil.createStudent(mockReq, mockRes);
+
+      expect(mockRes.statusCode).toBe(500);
+      expect(mockRes.responseData.success).toBe(false);
+    });
   });
 });

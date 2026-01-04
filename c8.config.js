@@ -2,24 +2,22 @@ module.exports = {
   all: true,
   include: [
     'index.js',
-    'utils/**/*.js'
+    'public/**/*.js'
   ],
   exclude: [
     'node_modules/**',
     'tests/**',
-    'public/**',
     '*.config.js',
-    'coverage/**',
-    'utils/TestRunner.js'
+    'coverage/**'
   ],
-  reporter: ['html', 'text', 'json-summary', 'lcov'],
-  reportsDirectory: './coverage',
+  reporter: ['html', 'text', 'lcov'],
+  reportsDirectory: './coverage/playwright',
   tempDirectory: './.nyc_output',
   checkCoverage: {
-    statements: 80,
-    branches: 80,
-    functions: 80,
-    lines: 80
+    statements: 95,
+    branches: 95,
+    functions: 95,
+    lines: 95
   }
 };
 

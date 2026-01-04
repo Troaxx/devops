@@ -10,14 +10,18 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "jest",
+    "test": "npm run test:jest && npm run test:playwright",
+    "test:jest": "jest",
+    "test:backend": "jest --testPathPattern=backend_unit",
+    "test:api": "jest --testPathPattern=api",
+    "test:playwright": "playwright test",
+    "test:frontend": "playwright test",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
-    "test:create": "playwright test tests/create_function",
-    "test:backend": "playwright test tests/**/backend_unit",
-    "test:api": "playwright test tests/**/api",
-    "test:frontend": "playwright test tests/**/frontend",
-    "test:coverage": "c8 --reporter=html --reporter=text --reporter=json-summary playwright test",
+    "test:create": "jest --testPathPattern=create_function && playwright test tests/create_function/frontend",
+    "test:jest:coverage": "jest --coverage",
+    "test:playwright:coverage": "c8 playwright test",
+    "test:coverage": "npm run test:jest:coverage && npm run test:playwright:coverage",
     "test:coverage:report": "c8 report --reporter=html --reporter=text"
   },
   "keywords": [
@@ -37,6 +41,7 @@
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "nodemon": "^3.0.1",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "supertest": "^7.0.0"
   }
 }

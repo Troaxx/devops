@@ -31,7 +31,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
     };
   });
 
-  describe('createStudent - Validation Tests', () => {
+  describe('Test Suite 1: Input Validation Logic', () => {
     test('should return 400 for missing required fields (empty body)', async () => {
       mockReq = { body: {} };
 
@@ -192,9 +192,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       expect(mockRes.responseData.success).toBe(false);
       expect(mockRes.responseData.message).toContain('Invalid scores');
     });
-  });
 
-  describe('createStudent - Duplicate Detection Tests', () => {
+
     test('should return 409 for duplicate student ID', async () => {
       const existingStudents = {
         students: [
@@ -227,7 +226,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
     });
   });
 
-  describe('createStudent - Success Tests', () => {
+  describe('Test Suite 2: Data Processing & Success Logic', () => {
     test('should create student successfully with valid data', async () => {
       const existingStudents = { students: [] };
       fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
@@ -348,7 +347,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
     });
   });
 
-  describe('createStudent - Error Handling Tests', () => {
+  describe('Test Suite 3: System Error & Exception Handling', () => {
     test('should return 500 when file read fails', async () => {
       fs.readFile.mockRejectedValue(new Error('File not found'));
 

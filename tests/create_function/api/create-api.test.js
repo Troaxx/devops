@@ -35,7 +35,7 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     }
   });
 
-  describe('POST /api/students - Success Cases', () => {
+  describe('Test Suite 2: Integration Success Scenarios (201)', () => {
     test('should create a new student with valid data (201)', async () => {
       const response = await request(app)
         .post('/api/students')
@@ -89,7 +89,7 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
   });
 
-  describe('POST /api/students - Validation Errors (400)', () => {
+  describe('Test Suite 1: Endpoint Status & Validation (400/409)', () => {
     test('should return 400 for missing required fields', async () => {
       const response = await request(app)
         .post('/api/students')
@@ -201,9 +201,7 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
       expect(response.body.success).toBe(false);
       expect(response.body.message).toContain('Invalid scores');
     });
-  });
 
-  describe('POST /api/students - Duplicate Detection (409)', () => {
     test('should return 409 for duplicate student ID', async () => {
       const studentData = {
         id: '2408004d',
@@ -228,7 +226,7 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
   });
 
-  describe('POST /api/students - Valid ID Formats', () => {
+  describe('Test Suite 2: Integration Success Scenarios - ID Variations', () => {
     test('should accept ID with suffix "a"', async () => {
       const response = await request(app)
         .post('/api/students')

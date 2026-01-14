@@ -28,9 +28,15 @@ app.put('/api/students/:id', UpdateStudentUtil.updateScores);
 // ===== Danish- DELETE API Endpoints =====
 app.delete('/api/students/:id', DeleteAccountUtil.deleteStudent);
 
+
 // Serve main page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Serve test dashboard
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
 // Start server

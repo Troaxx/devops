@@ -3,6 +3,7 @@
  * Handles student account creation UI and interactions
  */
 
+// Testing comment
 // Handle form submission for creating student
 document.getElementById('create-form').addEventListener('submit', async (e) => {
     e.preventDefault();

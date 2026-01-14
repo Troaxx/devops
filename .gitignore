@@ -18,5 +18,13 @@ Thumbs.db
 *.swp
 *.swo
 
-# Test coverage
+#Testing
 coverage/
+test-results/
+playwright-report/
+playwright/.cache/
+.nyc_output/
+utils/students.backup.json
+utils/students.test.json
+
+misc/

@@ -14,7 +14,7 @@ const createStudent = async (req, res) => {
         const { id, rapid, blitz, bullet } = req.body;
 
         // Validation 1: Check if all required fields are provided
-        if (!id || rapid === undefined || blitz === undefined || bullet === undefined) {
+        if (!id || rapid === undefined || rapid === '' || blitz === undefined || blitz === '' || bullet === undefined || bullet === '') {
             return res.status(400).json({
                 success: false,
                 message: 'Missing required fields. Please provide ID, Rapid, Blitz, and Bullet scores.'

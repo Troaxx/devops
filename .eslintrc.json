@@ -6,6 +6,7 @@
     "node": true,
     "jest": true
   },
+  "ignorePatterns": ["playwright-report/", "coverage/", "test-results/"],
   "extends": "eslint:recommended",
   "overrides": [
     {

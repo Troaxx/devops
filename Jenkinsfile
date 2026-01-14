@@ -88,7 +88,7 @@ pipeline {
 
     stage('Smoke Test') {
       steps {
-        bat "minikube service %APP_NAME% --url"
+        bat "minikube service devops-project-service --url"
       }
     }
   }

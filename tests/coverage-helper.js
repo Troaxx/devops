@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const COVERAGE_DIR = path.join(__dirname, '..', 'coverage', 'playwright');
-const COVERAGE_FILE = path.join(COVERAGE_DIR, 'coverage.json');
+
 
 let allCoverage = [];
 

@@ -87,6 +87,7 @@ class TestRunner {
           const coverageData = await fs.readFile(coveragePath, 'utf8');
           coverage = JSON.parse(coverageData);
         } catch (err) {
+          if (process.env.DEBUG) console.error('Error reading coverage:', err);
         }
       }
 

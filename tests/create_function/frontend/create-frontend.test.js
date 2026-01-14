@@ -62,11 +62,13 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await expect(message).toHaveClass(/error/);
     });
 
-    test('should show error message for missing rating fields', async ({ page }) => {
+    test('should show error message for missing rating fields (Rapid)', async ({ page }) => {
       const testId = `240${Math.floor(1000 + Math.random() * 9000)}a`;
       await page.fill('#student-id', testId);
-      await page.fill('#rapid-score', '1200');
-      // Remove required attributes to test JS validation
+      // Rapid missing
+      await page.fill('#blitz-score', '1150');
+      await page.fill('#bullet-score', '1100');
+
       await page.$eval('#create-form', form => {
         Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
       });
@@ -75,7 +77,57 @@ test.describe('Create Frontend Tests - Daniella', () => {
       const message = page.locator('#create-message');
       await expect(message).toBeVisible();
       await expect(message).toContainText('Please fill in all rating fields');
+    });
+
+    test('should show error message for missing rating fields (Blitz)', async ({ page }) => {
+      const testId = `240${Math.floor(1000 + Math.random() * 9000)}a`;
+      await page.fill('#student-id', testId);
+      await page.fill('#rapid-score', '1200');
+      // Blitz missing
+      await page.fill('#bullet-score', '1100');
+
+      await page.$eval('#create-form', form => {
+        Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
+      });
+      await page.click('button[type="submit"]');
+
+      const message = page.locator('#create-message');
+      await expect(message).toBeVisible();
+      await expect(message).toContainText('Please fill in all rating fields');
+    });
+
+    test('should show error message for missing rating fields (Bullet)', async ({ page }) => {
+      const testId = `240${Math.floor(1000 + Math.random() * 9000)}a`;
+      await page.fill('#student-id', testId);
+      await page.fill('#rapid-score', '1200');
+      await page.fill('#blitz-score', '1150');
+      // Bullet missing
+
+      await page.$eval('#create-form', form => {
+        Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
+      });
+      await page.click('button[type="submit"]');
+
+      const message = page.locator('#create-message');
+      await expect(message).toBeVisible();
+      await expect(message).toContainText('Please fill in all rating fields');
+    });
+
+    test('should handle network error during creation', async ({ page }) => {
+      await page.fill('#student-id', '2409999e');
+      await page.fill('#rapid-score', '1000');
+      await page.fill('#blitz-score', '1000');
+      await page.fill('#bullet-score', '1000');
+
+      // Abort the request to simulate network failure
+      await page.route('/api/students', route => route.abort());
+
+      await page.click('button[type="submit"]');
+
+      const message = page.locator('#create-message');
+      await expect(message).toBeVisible();
       await expect(message).toHaveClass(/error/);
+      await expect(message).toContainText('Failed to create account');
     });
 
     test('should show error message for duplicate student ID', async ({ page }) => {
@@ -101,8 +153,8 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await expect(page.locator('#create-message')).toHaveClass(/success/);
       await expect(page.locator('#student-id')).toHaveValue('');
 
-      // Wait for form to stabilize (fixes WebKit timing issue that causes flakiness)
-      await page.waitForTimeout(500);
+      // Wait for form to stabilize (fixes WebKit/Windows file timing issues that causes flakiness)
+      await page.waitForTimeout(2000);
 
       // 2. Try to create the SAME student again
       await page.fill('#student-id', testId);
@@ -110,15 +162,17 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1250');
       await page.fill('#bullet-score', '1200');
 
-      // Wait for conflict response (409)
+      // Wait for ANY response (creates a race-proof assertion)
       const errorResponsePromise = page.waitForResponse(response =>
         response.url().includes('/api/students') &&
-        response.request().method() === 'POST' &&
-        response.status() === 409
+        response.request().method() === 'POST'
       );
 
       await page.click('button[type="submit"]');
-      await errorResponsePromise;
+      const errorResponse = await errorResponsePromise;
+
+      // Verify status code explicitly (fails fast instead of timeout)
+      expect(errorResponse.status()).toBe(409);
 
       // 3. Verify error message
       const errorMessage = page.locator('#create-message');
@@ -199,11 +253,11 @@ test.describe('Create Frontend Tests - Daniella', () => {
         // We still check just in case, but random IDs should minimize this
         const messageText = await message.textContent();
         if (messageText.includes('already exists')) {
-           // Retry with another random ID if we got super unlucky
-           const retryId = `241${Math.floor(1000 + Math.random() * 9000)}a`;
-           await page.fill('#student-id', retryId);
-           await page.click('button[type="submit"]');
-           await page.waitForTimeout(500);
+          // Retry with another random ID if we got super unlucky
+          const retryId = `241${Math.floor(1000 + Math.random() * 9000)}a`;
+          await page.fill('#student-id', retryId);
+          await page.click('button[type="submit"]');
+          await page.waitForTimeout(500);
         }
 
         await expect(message).toContainText('successfully');
@@ -213,6 +267,31 @@ test.describe('Create Frontend Tests - Daniella', () => {
         await page.click('button:has-text("Create Account")');
         await page.waitForSelector('#create-section.active');
       }
+    });
+    test('should trigger loadRankings if defined', async ({ page }) => {
+      // Inject a mock function for loadRankings
+      await page.evaluate(() => {
+        window.loadRankings = () => { window.rankingsReloaded = true; };
+      });
+
+      const testId = `240${Math.floor(1000 + Math.random() * 9000)}e`;
+      await page.fill('#student-id', testId);
+      await page.fill('#rapid-score', '1200');
+      await page.fill('#blitz-score', '1150');
+      await page.fill('#bullet-score', '1100');
+
+      const responsePromise = page.waitForResponse(response =>
+        response.url().includes('/api/students') && response.request().method() === 'POST'
+      );
+
+      await page.click('button[type="submit"]');
+      await responsePromise;
+
+      // Wait for the timeout in the code (500ms) plus buffer
+      await page.waitForTimeout(1000);
+
+      const reloaded = await page.evaluate(() => window.rankingsReloaded);
+      expect(reloaded).toBe(true);
     });
   });
 

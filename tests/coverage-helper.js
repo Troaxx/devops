@@ -49,8 +49,12 @@ function saveCoverageReport() {
     fs.mkdirSync(COVERAGE_DIR, { recursive: true });
   }
 
-  fs.writeFileSync(COVERAGE_FILE, JSON.stringify(allCoverage, null, 2));
-  console.log(`[Coverage Helper] Coverage report saved to ${COVERAGE_FILE}`);
+  // Use a unique filename for each worker/process to avoid overwrites in parallel mode
+  const uniqueId = `coverage-${Date.now()}-${Math.floor(Math.random() * 10000)}.json`;
+  const filePath = path.join(COVERAGE_DIR, uniqueId);
+
+  fs.writeFileSync(filePath, JSON.stringify(allCoverage, null, 2));
+  console.log(`[Coverage Helper] Coverage report saved to ${filePath}`);
 }
 
 /**

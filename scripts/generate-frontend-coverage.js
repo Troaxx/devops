@@ -7,20 +7,38 @@ const reports = require('istanbul-reports');
 
 // Paths
 const playwrightCoverageDir = path.join(__dirname, '..', 'coverage', 'playwright');
-const coverageJsonPath = path.join(playwrightCoverageDir, 'coverage.json');
 const istanbulCoverageDir = path.join(__dirname, '..', 'coverage', 'playwright-istanbul');
 const sourceDir = path.join(__dirname, '..', 'public', 'js');
 
 async function convertCoverage() {
-  // Check if coverage file exists
-  if (!fs.existsSync(coverageJsonPath)) {
-    console.error('Coverage file not found:', coverageJsonPath);
+  // Check if coverage directory exists
+  if (!fs.existsSync(playwrightCoverageDir)) {
+    console.error('Coverage directory not found:', playwrightCoverageDir);
+    process.exit(1);
+  }
+
+  // Find all JSON coverage files
+  const coverageFiles = fs.readdirSync(playwrightCoverageDir).filter(f => f.endsWith('.json'));
+
+  if (coverageFiles.length === 0) {
+    console.error('No coverage files found in:', playwrightCoverageDir);
     console.error('Run "npm run test:playwright:coverage" first.');
     process.exit(1);
   }
 
-  // Read the V8 coverage data
-  const v8Coverage = JSON.parse(fs.readFileSync(coverageJsonPath, 'utf8'));
+  // Combine V8 coverage data from all files
+  let v8Coverage = [];
+  for (const file of coverageFiles) {
+    const filePath = path.join(playwrightCoverageDir, file);
+    try {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      if (Array.isArray(data)) {
+        v8Coverage.push(...data);
+      }
+    } catch (e) {
+      console.warn(`Warning: Failed to read ${file}: ${e.message}`);
+    }
+  }
 
   // Create an Istanbul coverage map
   const coverageMap = createCoverageMap({});
@@ -123,7 +141,7 @@ async function convertCoverage() {
   console.log(`Functions:  ${summary.functions.pct}%`);
   console.log(`Branches:   ${summary.branches.pct}%`);
 
-  // If any metrics fall below the required threshold
+    // If any metrics fall below the required threshold
   if (belowThreshold.length > 0) {
     console.error('\nX Coverage threshold NOT met:');
     // Print each failing metric and its coverage percentage

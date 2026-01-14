@@ -8,6 +8,7 @@ pipeline {
 
   triggers {
     pollSCM('* * * * *')
+    cron('H 0 * * *') // Run nightly at midnight (distributed load)
   }
 
   environment {
@@ -28,24 +29,37 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        // Installs packages from package-lock.json ensuring consistent builds
         bat "npm install"
       }
     }
 
-    stage('Linting') {
-      steps {
-        // Checks code style/errors (defined in package.json)
-        bat "npm run lint"
-      }
-    }
+    stage('Code Quality & Tests') {
+      parallel {
+        stage('Linting') {
+          steps {
+            bat "npm run lint"
+          }
+        }
 
-    stage('Unit Tests') {
-      steps {
-        // Run full test suite with coverage (Backend + Frontend)
-        bat "npm run test:coverage"
-        // Generate frontend report and check thresholds
-        bat "npm run coverage:report"
+        stage('Unit Tests') {
+          steps {
+            script {
+              // Check if build was triggered by the nightly timer
+              def isNightly = currentBuild.getBuildCauses().toString().contains('TimerTrigger')
+              echo "Is Nightly Build? ${isNightly}"
+
+              if (isNightly) {
+                // Run FULL suite (Mobile + Desktop)
+                bat "npm run test:coverage"
+              } else {
+                // Run CI suite (Desktop only) for speed
+                bat "npm run test:ci"
+              }
+            }
+            // Generate report and check thresholds
+            bat "npm run coverage:report"
+          }
+        }
       }
     }
 

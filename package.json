@@ -20,6 +20,7 @@
     "test:create": "jest --testPathPattern=create_function && playwright test tests/create_function/frontend",
     "test:jest:coverage": "jest --coverage",
     "test:playwright:coverage": "playwright test",
+    "test:ci": "npm run test:jest:coverage && playwright test --project=frontend-chromium --project=frontend-firefox --project=frontend-webkit",
     "test:coverage": "npm run test:jest:coverage && npm run test:playwright:coverage",
     "coverage:report": "node scripts/generate-frontend-coverage.js"
   },

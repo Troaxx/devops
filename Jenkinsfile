@@ -88,7 +88,8 @@ pipeline {
 
     stage('Smoke Test') {
       steps {
-        bat "minikube service devops-project-service --url"
+        bat "kubectl get svc devops-project-service"
+        bat "kubectl get endpoints devops-project-service"
       }
     }
   }

@@ -18,10 +18,22 @@
       "parserOptions": {
         "sourceType": "script"
       }
+    },
+    {
+      "files": ["public/js/**/*.js"],
+      "rules": {
+        "no-unused-vars": "off",
+        "no-undef": "off"
+      }
     }
   ],
   "parserOptions": {
     "ecmaVersion": "latest"
+  },
+  "globals": {
+    "loadRankings": "readonly",
+    "showMessage": "readonly",
+    "showUpdateMessage": "readonly"
   },
   "rules": {
     "no-unused-vars": "warn",

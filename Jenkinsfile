@@ -141,7 +141,8 @@ pipeline {
       """,
       mimeType: 'text/html',
       subject: "SUCCESS: ${env.JOB_NAME} [${env.BUILD_NUMBER}] - All Systems Go",
-      to: '2404908b@student.tp.edu.sg'
+      to: '2404908b@student.tp.edu.sg',
+      from: '2404908b@student.tp.edu.sg'
     }
     failure {
       emailext body: """
@@ -162,7 +163,8 @@ pipeline {
       """,
       mimeType: 'text/html',
       subject: "FAILURE: ${env.JOB_NAME} [${env.BUILD_NUMBER}] - Action Required",
-      to: '2404908b@student.tp.edu.sg'
+      to: '2404908b@student.tp.edu.sg',
+      from: '2404908b@student.tp.edu.sg'
     }
   }
 }

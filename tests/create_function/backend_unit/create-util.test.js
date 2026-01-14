@@ -142,7 +142,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       expect(mockRes.responseData.message).toContain('Invalid scores');
     });
 
-    test('should return 400 for negative scores', async () => {
+    test('should return 400 for negative scores', async () => { //negative case
       mockReq = {
         body: {
           id: '2403880d',
@@ -227,7 +227,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
   });
 
   describe('Test Suite 2: Data Processing & Success Logic', () => {
-    test('should create student successfully with valid data', async () => {
+    test('should create student successfully with valid data', async () => { //positive case
       const existingStudents = { students: [] };
       fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
       fs.writeFile.mockResolvedValue(undefined);
@@ -276,7 +276,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       expect(mockRes.responseData.student.bullet).toBe(0);
     });
 
-    test('should handle boundary value 3000 for scores', async () => {
+    test('should handle boundary value 3000 for scores', async () => { //edge case
       const existingStudents = { students: [] };
       fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
       fs.writeFile.mockResolvedValue(undefined);

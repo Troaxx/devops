@@ -134,7 +134,7 @@ pipeline {
               <li>Unit Tests: Passed (Coverage Thresholds Met)</li>
               <li>Deployment: Passed</li>
             </ul>
-            <p><a href="${env.JOB_URL}ws/coverage/lcov-report/index.html">View Backend Coverage</a> | <a href="${env.JOB_URL}ws/coverage/playwright-istanbul/lcov-report/index.html">View Frontend Coverage</a></p>
+            <p><a href="${env.BUILD_URL}artifact/coverage/jest/lcov-report/index.html">View Backend Coverage</a> | <a href="${env.BUILD_URL}artifact/coverage/playwright-istanbul/lcov-report/index.html">View Frontend Coverage</a></p>
           </div>
         </body>
         </html>

@@ -42,9 +42,10 @@ pipeline {
 
     stage('Unit Tests') {
       steps {
-        // Run backend unit tests
-        // We skip frontend tests here to ensure speed and stability in CI
-        bat "npm run test:backend"
+        // Run full test suite with coverage (Backend + Frontend)
+        bat "npm run test:coverage"
+        // Generate frontend report and check thresholds
+        bat "npm run coverage:report"
       }
     }
 
@@ -97,16 +98,57 @@ pipeline {
   post {
     always {
       echo "Build finished."
+      // Archive the coverage reports so they can be viewed in Jenkins
+      archiveArtifacts artifacts: 'coverage/**', allowEmptyArchive: true
     }
     success {
-      emailext body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' passed ALL checks (Lint, Test, Deploy).\n\nConsole: ${env.BUILD_URL}",
-               subject: "SUCCESS: Jenkins Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-               to: '2404908b@student.tp.edu.sg'
+      emailext body: """
+        <html>
+        <body style="font-family: Arial, sans-serif;">
+          <div style="background-color: #4CAF50; color: white; padding: 10px; text-align: center;">
+            <h2>BUILD SUCCESS</h2>
+          </div>
+          <div style="padding: 20px; border: 1px solid #ddd;">
+            <p><strong>Project:</strong> ${env.JOB_NAME}</p>
+            <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
+            <p><strong>Status:</strong> <span style="color: green; font-weight: bold;">Passed</span></p>
+            <p>Ref: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+            <hr>
+            <h3>Build Summary</h3>
+            <ul>
+              <li>Linting: Passed</li>
+              <li>Unit Tests: Passed (Coverage Thresholds Met)</li>
+              <li>Deployment: Passed</li>
+            </ul>
+            <p><a href="${env.JOB_URL}ws/coverage/lcov-report/index.html">View Backend Coverage</a> | <a href="${env.JOB_URL}ws/coverage/playwright-istanbul/lcov-report/index.html">View Frontend Coverage</a></p>
+          </div>
+        </body>
+        </html>
+      """,
+      mimeType: 'text/html',
+      subject: "SUCCESS: ${env.JOB_NAME} [${env.BUILD_NUMBER}] - All Systems Go",
+      to: '2404908b@student.tp.edu.sg'
     }
     failure {
-      emailext body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' FAILED.\n\nConsole: ${env.BUILD_URL}",
-               subject: "FAILURE: Jenkins Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-               to: '2404908b@student.tp.edu.sg'
+      emailext body: """
+        <html>
+        <body style="font-family: Arial, sans-serif;">
+          <div style="background-color: #f44336; color: white; padding: 10px; text-align: center;">
+            <h2>BUILD FAILED</h2>
+          </div>
+          <div style="padding: 20px; border: 1px solid #ddd;">
+            <p><strong>Project:</strong> ${env.JOB_NAME}</p>
+            <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
+            <p><strong>Status:</strong> <span style="color: red; font-weight: bold;">Failed</span></p>
+            <p>Check the console output for details.</p>
+            <p>Ref: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+          </div>
+        </body>
+        </html>
+      """,
+      mimeType: 'text/html',
+      subject: "FAILURE: ${env.JOB_NAME} [${env.BUILD_NUMBER}] - Action Required",
+      to: '2404908b@student.tp.edu.sg'
     }
   }
 }

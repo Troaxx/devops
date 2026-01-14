@@ -28,3 +28,5 @@ utils/students.backup.json
 utils/students.test.json
 
 misc/
+
+.agent/

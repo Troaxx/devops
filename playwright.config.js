@@ -10,10 +10,10 @@ module.exports = defineConfig({
   reporter: [
     ['html'],
     ['json', { outputFile: 'test-results/results.json' }],
-    ['junit', { outputFile: 'test-results/junit.xml' }]
+    ['junit', { outputFile: 'test-results/junit.xml' }],
   ],
   use: {
-    baseURL: 'http://localhost:5000',
+    baseURL: 'http://localhost:5050',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -59,10 +59,8 @@ module.exports = defineConfig({
   ],
   webServer: {
     command: 'npm start',
-    url: 'http://localhost:5000',
+    url: 'http://localhost:5050',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },
 });
-
-

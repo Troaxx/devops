@@ -24,6 +24,7 @@ pipeline {
         git branch: 'main',
             credentialsId: '0765cf8e-02bc-4005-9a89-7a1ea729647e',
             url: 'https://github.com/Troaxx/devops'
+        bat "npm install"
         bat "node scripts/pipeline-logger.js info \"Pipeline Started\" stage=Checkout branch=main"
       }
     }

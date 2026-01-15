@@ -18,6 +18,12 @@ app.use(statusMonitor());
 app.use(express.json());
 app.use(express.static('public'));
 
+// Request Logging Middleware
+app.use((req, res, next) => {
+  logger.info(`Incoming Request: ${req.method} ${req.url}`);
+  next();
+});
+
 // ===== Daniella - CREATE API Endpoints =====
 app.post('/api/students', CreateStudentUtil.createStudent);
 
@@ -49,6 +55,5 @@ const server = app.listen(PORT, function () {
   }:${address.port}`;
   console.log(`Chess Club Ranking System at: ${baseUrl}`);
   logger.info(`Express Status at: ${baseUrl}/status`);
-  logger.error(`Example of error log`);
 });
 module.exports = { app, server };

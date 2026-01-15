@@ -1,5 +1,5 @@
 const winston = require('winston');
-const { combine, timestamp, printf } = winston.format;
+const { combine, timestamp, printf, colorize } = winston.format;
 
 const logFormat = printf(({ timestamp, level, message, ...metadata }) => {
   let logMessage = `${timestamp} [${level}] : ${message}`;
@@ -13,7 +13,9 @@ const logger = winston.createLogger({
   level: 'info',
   format: combine(timestamp(), logFormat),
   transports: [
-    new winston.transports.Console(),
+    new winston.transports.Console({
+      format: combine(colorize(), timestamp(), logFormat),
+    }),
     new winston.transports.File({ filename: 'pipeline.log' }),
   ],
 });

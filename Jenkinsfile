@@ -24,6 +24,7 @@ pipeline {
         git branch: 'main',
             credentialsId: '0765cf8e-02bc-4005-9a89-7a1ea729647e',
             url: 'https://github.com/Troaxx/devops'
+        bat "node scripts/pipeline-logger.js info \"Pipeline Started\" stage=Checkout branch=main"
       }
     }
 
@@ -37,6 +38,7 @@ pipeline {
       parallel {
         stage('Linting') {
           steps {
+            bat "node scripts/pipeline-logger.js info \"Linting Started\" stage=Linting"
             bat "npm run lint"
           }
         }
@@ -50,9 +52,11 @@ pipeline {
 
               if (isNightly) {
                 // Run FULL suite (Mobile + Desktop)
+                bat "node scripts/pipeline-logger.js info \"Running Nightly Tests\" stage=Tests type=Full"
                 bat "npm run test:coverage"
               } else {
                 // Run CI suite (Desktop only) for speed
+                bat "node scripts/pipeline-logger.js info \"Running CI Tests\" stage=Tests type=CI"
                 bat "npm run test:ci"
               }
             }
@@ -65,6 +69,7 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
+        bat "node scripts/pipeline-logger.js info \"Building Docker Image\" stage=Build image=%IMAGE_FULL%"
         bat "docker build -t %IMAGE_FULL% ."
         bat "docker images | findstr %APP_NAME%"
       }
@@ -84,6 +89,7 @@ pipeline {
 
     stage('Deploy to Kubernetes') {
       steps {
+        bat "node scripts/pipeline-logger.js info \"Deploying to Kubernetes\" stage=Deploy"
         powershell '''
           (Get-Content deployment.yaml) `
             -replace "{{BUILD_NUMBER}}", "$env:BUILD_NUMBER" |
@@ -144,6 +150,7 @@ pipeline {
       to: '2404908b@student.tp.edu.sg'
     }
     failure {
+      bat "node scripts/pipeline-logger.js error \"Pipeline Failed\" result=Failure"
       emailext body: """
         <html>
         <body style="font-family: Arial, sans-serif;">

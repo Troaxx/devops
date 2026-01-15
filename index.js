@@ -7,8 +7,12 @@ const ViewRankingsUtil = require('./utils/DylanUtil');
 const UpdateStudentUtil = require('./utils/GengyueUtil');
 const DeleteAccountUtil = require('./utils/DanishUtil');
 
+const logger = require('./logger');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
+
+const statusMonitor = require('express-status-monitor');
+app.use(statusMonitor());
 
 // Middleware
 app.use(express.json());
@@ -28,19 +32,23 @@ app.put('/api/students/:id', UpdateStudentUtil.updateScores);
 // ===== Danish- DELETE API Endpoints =====
 app.delete('/api/students/:id', DeleteAccountUtil.deleteStudent);
 
-
 // Serve main page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Serve test dashboard
 app.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Chess Club Ranking System running on http://localhost:${PORT}`);
-    console.log(`Server started at ${new Date().toLocaleString()}`);
+server = app.listen(PORT, function () {
+  const address = server.address();
+  const baseUrl = `http://${
+    address.address == '::' ? 'localhost' : address.address
+  }:${address.port}`;
+  console.log(`Chess Club Ranking System at: ${baseUrl}`);
+  logger.info(`Express Status at: ${baseUrl}/status`);
+  logger.error(`Example of error log`);
 });
+module.exports = { app, server };

@@ -9,6 +9,7 @@ This system allows chess club administrators to manage student records with supp
 ## Features
 
 ### CREATE - Student Registration (Daniella)
+
 Files: `utils/DaniellaUtil.js`, `public/js/daniella.js`
 
 - Automatic unique student ID generation
@@ -17,6 +18,7 @@ Files: `utils/DaniellaUtil.js`, `public/js/daniella.js`
 - Input validation and duplicate detection
 
 ### READ - View Rankings (Dylan)
+
 Files: `utils/DylanUtil.js`, `public/js/dylan.js`
 
 - Display all students in a sortable table
@@ -24,6 +26,7 @@ Files: `utils/DylanUtil.js`, `public/js/dylan.js`
 - Search and filter functionality
 
 ### UPDATE - Score Management (Gengyue)
+
 Files: `utils/GengyueUtil.js`, `public/js/gengyue.js`
 
 - Secure student login system
@@ -31,6 +34,7 @@ Files: `utils/GengyueUtil.js`, `public/js/gengyue.js`
 - Input validation (0-3000 rating range)
 
 ### DELETE - Account Deletion (Danish)
+
 Files: `utils/DanishUtil.js`, `public/js/danish.js`
 
 - Student account deletion
@@ -47,17 +51,20 @@ Files: `utils/DanishUtil.js`, `public/js/danish.js`
 ## Installation
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/Troaxx/devops.git
    cd devops
    ```
 
 2. Install dependencies
+
    ```bash
    npm install
    ```
 
 3. Start the server
+
    ```bash
    npm start
    ```
@@ -92,32 +99,37 @@ chess-club-ranking/
 ## API Endpoints
 
 ### CREATE
+
 - POST /api/students - Create new student
 
 ### READ
+
 - GET /api/students - Get all students
 - GET /api/rankings - Get student rankings
 
 ### UPDATE
+
 - POST /api/login - Student login
 - GET /api/students/:id - Get student by ID
 - PUT /api/students/:id - Update student scores
 
 ### DELETE
+
 - DELETE /api/students/:id - Delete student account
 
 ## Team Members
 
-| Name | Role | Feature | Branch |
-|------|------|---------|--------|
-| Daniella | Developer | CREATE | create_daniella |
-| Dylan | Developer | READ | read_dylan |
-| Gengyue | Developer | UPDATE | update_gengyue |
-| Danish | Developer | DELETE | delete_danish |
+| Name     | Role      | Feature | Branch          |
+| -------- | --------- | ------- | --------------- |
+| Daniella | Developer | CREATE  | create_daniella |
+| Dylan    | Developer | READ    | read_dylan      |
+| Gengyue  | Developer | UPDATE  | update_gengyue  |
+| Danish   | Developer | DELETE  | delete_danish   |
 
 ## Development Workflow
 
 ### Branching Strategy
+
 - main - Production-ready code
 - create_daniella - CREATE feature
 - read_dylan - READ feature
@@ -125,6 +137,7 @@ chess-club-ranking/
 - delete_danish - DELETE feature
 
 ### Commit Guidelines
+
 ```
 type(scope): description
 

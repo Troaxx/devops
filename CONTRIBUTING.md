@@ -2,18 +2,19 @@
 
 ## Team Members
 
-| Name | Feature | Branch | Files |
-|------|---------|--------|-------|
-| Daniella | CREATE | create_daniella | DaniellaUtil.js, daniella.js |
-| Dylan | READ | read_dylan | DylanUtil.js, dylan.js |
-| Gengyue | UPDATE | update_gengyue | GengyueUtil.js, gengyue.js |
-| Danish | DELETE | delete_danish | DanishUtil.js, danish.js |
+| Name     | Feature | Branch          | Files                        |
+| -------- | ------- | --------------- | ---------------------------- |
+| Daniella | CREATE  | create_daniella | DaniellaUtil.js, daniella.js |
+| Dylan    | READ    | read_dylan      | DylanUtil.js, dylan.js       |
+| Gengyue  | UPDATE  | update_gengyue  | GengyueUtil.js, gengyue.js   |
+| Danish   | DELETE  | delete_danish   | DanishUtil.js, danish.js     |
 
 ## Development Workflow
 
 ### 1. Branch Strategy
 
 Each team member works on their own feature branch:
+
 - main - Production code
 - create_daniella - CREATE feature
 - read_dylan - READ feature
@@ -43,6 +44,7 @@ refactor(delete): simplify deletion logic
 ```
 
 Types:
+
 - feat: New feature
 - fix: Bug fix
 - docs: Documentation
@@ -61,16 +63,19 @@ Types:
 ### 5. Code Standards
 
 #### File Naming
+
 - Backend utils: `[Name]Util.js` (e.g., DaniellaUtil.js)
 - Frontend scripts: `[name].js` (e.g., daniella.js)
 
 #### Code Style
+
 - Use 2 spaces for indentation
 - Use single quotes for strings
 - Add semicolons
 - Follow ESLint rules
 
 #### Variable Naming
+
 - Use camelCase for variables and functions
 - Use PascalCase for utility module names
 - Use descriptive names
@@ -78,6 +83,7 @@ Types:
 ### 6. Testing Requirements
 
 Before creating a PR:
+
 - Test your feature manually
 - Verify all CRUD operations work
 - Check error handling
@@ -101,6 +107,7 @@ project/
 ### 8. API Endpoints
 
 Each feature uses specific endpoints:
+
 - CREATE: POST /api/students
 - READ: GET /api/students, GET /api/rankings
 - UPDATE: POST /api/login, GET /api/students/:id, PUT /api/students/:id
@@ -118,17 +125,21 @@ Email: Must be unique and valid format
 ### 10. Common Issues
 
 #### Merge Conflicts
+
 If you encounter merge conflicts:
+
 1. Pull latest changes from main
 2. Resolve conflicts in your branch
 3. Test after resolution
 4. Commit and push
 
 #### Server Port Issues
+
 Default port: 5000
 If port is in use, change in index.js
 
 #### Database File
+
 All data stored in: utils/students.json
 Do not commit this file with test data
 

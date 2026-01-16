@@ -38,8 +38,10 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       await page.fill('#bullet-score', '1100');
       // Remove required attributes to test JS validation
-      await page.$eval('#create-form', form => {
-        Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
+      await page.$eval('#create-form', (form) => {
+        Array.from(form.querySelectorAll('input')).forEach((input) =>
+          input.removeAttribute('required'),
+        );
       });
       await page.click('button[type="submit"]');
 
@@ -69,8 +71,10 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       await page.fill('#bullet-score', '1100');
 
-      await page.$eval('#create-form', form => {
-        Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
+      await page.$eval('#create-form', (form) => {
+        Array.from(form.querySelectorAll('input')).forEach((input) =>
+          input.removeAttribute('required'),
+        );
       });
       await page.click('button[type="submit"]');
 
@@ -86,8 +90,10 @@ test.describe('Create Frontend Tests - Daniella', () => {
       // Blitz missing
       await page.fill('#bullet-score', '1100');
 
-      await page.$eval('#create-form', form => {
-        Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
+      await page.$eval('#create-form', (form) => {
+        Array.from(form.querySelectorAll('input')).forEach((input) =>
+          input.removeAttribute('required'),
+        );
       });
       await page.click('button[type="submit"]');
 
@@ -103,8 +109,10 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       // Bullet missing
 
-      await page.$eval('#create-form', form => {
-        Array.from(form.querySelectorAll('input')).forEach(input => input.removeAttribute('required'));
+      await page.$eval('#create-form', (form) => {
+        Array.from(form.querySelectorAll('input')).forEach((input) =>
+          input.removeAttribute('required'),
+        );
       });
       await page.click('button[type="submit"]');
 
@@ -120,7 +128,7 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#bullet-score', '1000');
 
       // Abort the request to simulate network failure
-      await page.route('/api/students', route => route.abort());
+      await page.route('/api/students', (route) => route.abort());
 
       await page.click('button[type="submit"]');
 
@@ -140,10 +148,11 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#bullet-score', '1100');
 
       // Wait for success response (201)
-      const successResponsePromise = page.waitForResponse(response =>
-        response.url().includes('/api/students') &&
-        response.request().method() === 'POST' &&
-        response.status() === 201
+      const successResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/students') &&
+          response.request().method() === 'POST' &&
+          response.status() === 201,
       );
 
       await page.click('button[type="submit"]');
@@ -163,9 +172,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#bullet-score', '1200');
 
       // Wait for ANY response (creates a race-proof assertion)
-      const errorResponsePromise = page.waitForResponse(response =>
-        response.url().includes('/api/students') &&
-        response.request().method() === 'POST'
+      const errorResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/students') && response.request().method() === 'POST',
       );
 
       await page.click('button[type="submit"]');
@@ -209,8 +218,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       await page.fill('#bullet-score', '1100');
 
-      const responsePromise = page.waitForResponse(response =>
-        response.url().includes('/api/students') && response.request().method() === 'POST'
+      const responsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/students') && response.request().method() === 'POST',
       );
 
       await page.click('button[type="submit"]');
@@ -231,7 +241,7 @@ test.describe('Create Frontend Tests - Daniella', () => {
         `240${Math.floor(1000 + Math.random() * 9000)}b`,
         `240${Math.floor(1000 + Math.random() * 9000)}c`,
         `240${Math.floor(1000 + Math.random() * 9000)}d`,
-        `240${Math.floor(1000 + Math.random() * 9000)}e`
+        `240${Math.floor(1000 + Math.random() * 9000)}e`,
       ];
 
       for (const validId of validIds) {
@@ -240,8 +250,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
         await page.fill('#blitz-score', '1150');
         await page.fill('#bullet-score', '1100');
 
-        const responsePromise = page.waitForResponse(response =>
-          response.url().includes('/api/students') && response.request().method() === 'POST'
+        const responsePromise = page.waitForResponse(
+          (response) =>
+            response.url().includes('/api/students') && response.request().method() === 'POST',
         );
 
         await page.click('button[type="submit"]');
@@ -271,7 +282,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
     test('should trigger loadRankings if defined', async ({ page }) => {
       // Inject a mock function for loadRankings
       await page.evaluate(() => {
-        window.loadRankings = () => { window.rankingsReloaded = true; };
+        window.loadRankings = () => {
+          window.rankingsReloaded = true;
+        };
       });
 
       const testId = `240${Math.floor(1000 + Math.random() * 9000)}e`;
@@ -280,8 +293,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       await page.fill('#bullet-score', '1100');
 
-      const responsePromise = page.waitForResponse(response =>
-        response.url().includes('/api/students') && response.request().method() === 'POST'
+      const responsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/students') && response.request().method() === 'POST',
       );
 
       await page.click('button[type="submit"]');
@@ -302,7 +316,7 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await expect(page.locator('#blitz-score')).toBeVisible();
       await expect(page.locator('#bullet-score')).toBeVisible();
       const submitBtn = page.locator('#create-form button[type="submit"]');
-      await submitBtn.evaluate(el => el.scrollIntoView());
+      await submitBtn.evaluate((el) => el.scrollIntoView());
       await expect(submitBtn).toBeVisible();
     });
 
@@ -314,8 +328,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       await page.fill('#bullet-score', '1100');
 
-      const responsePromise = page.waitForResponse(response =>
-        response.url().includes('/api/students') && response.request().method() === 'POST'
+      const responsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/students') && response.request().method() === 'POST',
       );
 
       await page.click('button[type="submit"]');
@@ -336,8 +351,9 @@ test.describe('Create Frontend Tests - Daniella', () => {
       await page.fill('#blitz-score', '1150');
       await page.fill('#bullet-score', '1100');
 
-      const responsePromise = page.waitForResponse(response =>
-        response.url().includes('/api/students') && response.request().method() === 'POST'
+      const responsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/students') && response.request().method() === 'POST',
       );
 
       await page.click('button[type="submit"]');

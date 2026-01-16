@@ -1,23 +1,23 @@
 ---
 name: Feature Request
 about: Suggest a new feature
-title: '[FEATURE] '
+title: "[FEATURE] "
 labels: enhancement
-assignees: ''
+assignees: ""
 ---
 
 ## Feature Description
 
-
 ## Problem Statement
+
 What problem does this feature solve?
 
-
 ## Proposed Solution
+
 How should this feature work?
 
-
 ## Related Feature
+
 - [ ] CREATE (Student Registration)
 - [ ] READ (View Rankings)
 - [ ] UPDATE (Score Management)
@@ -26,6 +26,4 @@ How should this feature work?
 
 ## Benefits
 
-
 ## Additional Notes
-

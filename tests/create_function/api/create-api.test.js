@@ -37,14 +37,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
 
   describe('Test Suite 2: Integration Success Scenarios (201)', () => {
     test('should create a new student with valid data (201)', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2409999a',
-          rapid: 1200,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2409999a',
+        rapid: 1200,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);
@@ -56,14 +54,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should handle boundary values (0 and 3000)', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2409999b',
-          rapid: 0,
-          blitz: 1500,
-          bullet: 3000
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2409999b',
+        rapid: 0,
+        blitz: 1500,
+        bullet: 3000,
+      });
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);
@@ -72,14 +68,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should parse string numbers correctly', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2409999c',
-          rapid: '1200',
-          blitz: '1150',
-          bullet: '1100'
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2409999c',
+        rapid: '1200',
+        blitz: '1150',
+        bullet: '1100',
+      });
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);
@@ -91,11 +85,9 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
 
   describe('Test Suite 1: Endpoint Status & Validation (400/409)', () => {
     test('should return 400 for missing required fields', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2409999d'
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2409999d',
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -103,9 +95,7 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for empty body', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({});
+      const response = await request(app).post('/api/students').send({});
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -113,14 +103,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for invalid ID format (too short)', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '123456a',
-          rapid: 1200,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '123456a',
+        rapid: 1200,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -128,14 +116,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for invalid ID format (wrong suffix)', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2409999z',
-          rapid: 1200,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2409999z',
+        rapid: 1200,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -143,14 +129,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for scores above 3000', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2409999e',
-          rapid: 3500,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2409999e',
+        rapid: 3500,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -158,14 +142,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for negative scores', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2408001a',
-          rapid: -100,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2408001a',
+        rapid: -100,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -173,14 +155,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for blitz score out of range', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2408002b',
-          rapid: 1200,
-          blitz: 5000,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2408002b',
+        rapid: 1200,
+        blitz: 5000,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -188,14 +168,12 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
     });
 
     test('should return 400 for bullet score out of range', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2408003c',
-          rapid: 1200,
-          blitz: 1150,
-          bullet: -50
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2408003c',
+        rapid: 1200,
+        blitz: 1150,
+        bullet: -50,
+      });
 
       expect(response.status).toBe(400);
       expect(response.body.success).toBe(false);
@@ -207,18 +185,14 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
         id: '2408004d',
         rapid: 1200,
         blitz: 1150,
-        bullet: 1100
+        bullet: 1100,
       };
 
       // Create first student
-      await request(app)
-        .post('/api/students')
-        .send(studentData);
+      await request(app).post('/api/students').send(studentData);
 
       // Try to create duplicate
-      const response = await request(app)
-        .post('/api/students')
-        .send(studentData);
+      const response = await request(app).post('/api/students').send(studentData);
 
       expect(response.status).toBe(409);
       expect(response.body.success).toBe(false);
@@ -228,28 +202,24 @@ describe('Create API Tests - Daniella (Jest + Supertest)', () => {
 
   describe('Test Suite 2: Integration Success Scenarios - ID Variations', () => {
     test('should accept ID with suffix "a"', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2403880a',
-          rapid: 1200,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2403880a',
+        rapid: 1200,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);
     });
 
     test('should accept ID with suffix "e"', async () => {
-      const response = await request(app)
-        .post('/api/students')
-        .send({
-          id: '2403880e',
-          rapid: 1200,
-          blitz: 1150,
-          bullet: 1100
-        });
+      const response = await request(app).post('/api/students').send({
+        id: '2403880e',
+        rapid: 1200,
+        blitz: 1150,
+        bullet: 1100,
+      });
 
       expect(response.status).toBe(201);
       expect(response.body.success).toBe(true);

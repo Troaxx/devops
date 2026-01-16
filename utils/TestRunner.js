@@ -15,7 +15,7 @@ class TestRunner {
       delete: 'tests/delete_function',
       backend: 'tests/**/backend_unit',
       api: 'tests/**/api',
-      frontend: 'tests/**/frontend'
+      frontend: 'tests/**/frontend',
     };
   }
 
@@ -32,7 +32,7 @@ class TestRunner {
     try {
       const { stdout, stderr } = await execAsync(command, {
         cwd: process.cwd(),
-        maxBuffer: 10 * 1024 * 1024
+        maxBuffer: 10 * 1024 * 1024,
       });
 
       let coverage = null;
@@ -64,7 +64,7 @@ class TestRunner {
         stdout,
         stderr,
         testResults,
-        coverage
+        coverage,
       };
     } catch (error) {
       let testResults = null;
@@ -96,7 +96,7 @@ class TestRunner {
         stdout: error.stdout || '',
         stderr: error.stderr || error.message,
         testResults,
-        coverage
+        coverage,
       };
     }
   }
@@ -113,11 +113,11 @@ class TestRunner {
         total: 0,
         passed: 0,
         failed: 0,
-        skipped: 0
-      }
+        skipped: 0,
+      },
     };
 
-    lines.forEach(line => {
+    lines.forEach((line) => {
       if (line.includes('passed')) {
         const match = line.match(/(\d+)\s+passed/);
         if (match) {
@@ -150,19 +150,19 @@ class TestRunner {
     try {
       const { stdout } = await execAsync('npx playwright test --list', {
         cwd: process.cwd(),
-        maxBuffer: 10 * 1024 * 1024
+        maxBuffer: 10 * 1024 * 1024,
       });
 
       const tests = this.parseTestList(stdout);
       return {
         success: true,
-        tests
+        tests,
       };
     } catch (error) {
       return {
         success: false,
         error: error.message,
-        tests: []
+        tests: [],
       };
     }
   }
@@ -174,19 +174,19 @@ class TestRunner {
       read: [],
       update: [],
       delete: [],
-      all: []
+      all: [],
     };
 
     const seenTests = {
       create: new Set(),
       read: new Set(),
       update: new Set(),
-      delete: new Set()
+      delete: new Set(),
     };
 
     let currentFeature = null;
 
-    lines.forEach(line => {
+    lines.forEach((line) => {
       if (line.includes('create_function')) {
         currentFeature = 'create';
       } else if (line.includes('read_function')) {
@@ -217,17 +217,16 @@ class TestRunner {
       const coverage = JSON.parse(coverageData);
       return {
         success: true,
-        coverage
+        coverage,
       };
     } catch (error) {
       return {
         success: false,
         error: error.message,
-        coverage: null
+        coverage: null,
       };
     }
   }
 }
 
 module.exports = new TestRunner();
-

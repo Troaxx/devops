@@ -1,15 +1,15 @@
 ---
 name: Task
 about: Track development tasks
-title: '[TASK] '
+title: "[TASK] "
 labels: task
-assignees: ''
+assignees: ""
 ---
 
 ## Task Description
 
-
 ## Related Feature
+
 - [ ] CREATE (Student Registration) - Daniella
 - [ ] READ (View Rankings) - Dylan
 - [ ] UPDATE (Score Management) - Gengyue
@@ -18,21 +18,22 @@ assignees: ''
 - [ ] DevOps
 
 ## Subtasks
+
 - [ ]
 - [ ]
 - [ ]
 
 ## Files to Modify
+
 -
 -
 
 ## Assigned To
 
-
 ## Priority
+
 - [ ] High
 - [ ] Medium
 - [ ] Low
 
 ## Additional Notes
-

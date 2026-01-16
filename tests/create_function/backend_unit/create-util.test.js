@@ -1,12 +1,17 @@
 const CreateStudentUtil = require('../../../utils/DaniellaUtil');
 
 // Mock the fs module
-jest.mock('fs', () => ({
-  promises: {
-    readFile: jest.fn(),
-    writeFile: jest.fn()
-  }
-}));
+jest.mock('fs', () => {
+  const originalFs = jest.requireActual('fs');
+  return {
+    ...originalFs,
+    existsSync: jest.fn(() => true), // Mock existsSync to return true so Winston doesn't crash
+    promises: {
+      readFile: jest.fn(),
+      writeFile: jest.fn(),
+    },
+  };
+});
 
 const fs = require('fs').promises;
 
@@ -27,7 +32,7 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       json: function (data) {
         this.responseData = data;
         return this;
-      }
+      },
     };
   });
 
@@ -47,8 +52,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
         body: {
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -63,8 +68,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
         body: {
           id: '2403880d',
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -80,8 +85,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '123456a',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -97,8 +102,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880z',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -114,8 +119,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '24038801',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -131,8 +136,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 3500,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -142,14 +147,15 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       expect(mockRes.responseData.message).toContain('Invalid scores');
     });
 
-    test('should return 400 for negative scores', async () => { //negative case
+    test('should return 400 for negative scores', async () => {
+      //negative case
       mockReq = {
         body: {
           id: '2403880d',
           rapid: -100,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -165,8 +171,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 1200,
           blitz: 5000,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -182,8 +188,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 1200,
           blitz: 1150,
-          bullet: -50
-        }
+          bullet: -50,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -193,7 +199,6 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       expect(mockRes.responseData.message).toContain('Invalid scores');
     });
 
-
     test('should return 409 for duplicate student ID', async () => {
       const existingStudents = {
         students: [
@@ -202,9 +207,9 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
             rapid: 1200,
             blitz: 1150,
             bullet: 1100,
-            createdAt: '2025-01-01T00:00:00Z'
-          }
-        ]
+            createdAt: '2025-01-01T00:00:00Z',
+          },
+        ],
       };
 
       fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
@@ -214,8 +219,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 1300,
           blitz: 1250,
-          bullet: 1200
-        }
+          bullet: 1200,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -227,7 +232,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
   });
 
   describe('Test Suite 2: Data Processing & Success Logic', () => {
-    test('should create student successfully with valid data', async () => { //positive case
+    test('should create student successfully with valid data', async () => {
+      //positive case
       const existingStudents = { students: [] };
       fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
       fs.writeFile.mockResolvedValue(undefined);
@@ -237,8 +243,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2409999a',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -263,8 +269,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2409999b',
           rapid: 0,
           blitz: 0,
-          bullet: 0
-        }
+          bullet: 0,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -276,7 +282,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
       expect(mockRes.responseData.student.bullet).toBe(0);
     });
 
-    test('should handle boundary value 3000 for scores', async () => { //edge case
+    test('should handle boundary value 3000 for scores', async () => {
+      //edge case
       const existingStudents = { students: [] };
       fs.readFile.mockResolvedValue(JSON.stringify(existingStudents));
       fs.writeFile.mockResolvedValue(undefined);
@@ -286,8 +293,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2409999c',
           rapid: 3000,
           blitz: 3000,
-          bullet: 3000
-        }
+          bullet: 3000,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -309,8 +316,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2409999d',
           rapid: '1200',
           blitz: '1150',
-          bullet: '1100'
-        }
+          bullet: '1100',
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -335,8 +342,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
             id: `2403880${suffix}`,
             rapid: 1200,
             blitz: 1150,
-            bullet: 1100
-          }
+            bullet: 1100,
+          },
         };
 
         await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -356,8 +363,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -376,8 +383,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);
@@ -394,8 +401,8 @@ describe('DaniellaUtil - Backend Unit Tests', () => {
           id: '2403880d',
           rapid: 1200,
           blitz: 1150,
-          bullet: 1100
-        }
+          bullet: 1100,
+        },
       };
 
       await CreateStudentUtil.createStudent(mockReq, mockRes);

@@ -18,7 +18,7 @@ async function convertCoverage() {
   }
 
   // Find all JSON coverage files
-  const coverageFiles = fs.readdirSync(playwrightCoverageDir).filter(f => f.endsWith('.json'));
+  const coverageFiles = fs.readdirSync(playwrightCoverageDir).filter((f) => f.endsWith('.json'));
 
   if (coverageFiles.length === 0) {
     console.error('No coverage files found in:', playwrightCoverageDir);
@@ -48,7 +48,7 @@ async function convertCoverage() {
   const skippedFiles = new Set();
 
   // Get all JS files in source directory for reference
-  const allSourceFiles = fs.readdirSync(sourceDir).filter(f => f.endsWith('.js'));
+  const allSourceFiles = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.js'));
 
   // Convert each V8 coverage entry to Istanbul format
   for (const entry of v8Coverage) {
@@ -90,7 +90,7 @@ async function convertCoverage() {
   }
 
   // Add remaining source files that weren't encountered
-  allSourceFiles.forEach(f => {
+  allSourceFiles.forEach((f) => {
     if (!includedFiles.has(f)) {
       skippedFiles.add(f);
     }
@@ -98,8 +98,8 @@ async function convertCoverage() {
 
   // Print file processing summary
   console.log('');
-  includedFiles.forEach(f => console.log(`Processing coverage for: /js/${f}`));
-  skippedFiles.forEach(f => console.log(`Skipping: /js/${f}`));
+  includedFiles.forEach((f) => console.log(`Processing coverage for: /js/${f}`));
+  skippedFiles.forEach((f) => console.log(`Skipping: /js/${f}`));
 
   // Ensure output directory exists
   if (!fs.existsSync(istanbulCoverageDir)) {
@@ -108,7 +108,7 @@ async function convertCoverage() {
 
   // Generate HTML and lcov reports
   const context = createContext({ dir: istanbulCoverageDir, coverageMap });
-  ['html', 'lcovonly'].forEach(type => reports.create(type).execute(context));
+  ['html', 'lcovonly'].forEach((type) => reports.create(type).execute(context));
 
   // Retrieve overall coverage summary data from the coverage map
   const summary = coverageMap.getCoverageSummary().data;
@@ -118,7 +118,7 @@ async function convertCoverage() {
     lines: 95,
     statements: 95,
     functions: 95,
-    branches: 95
+    branches: 95,
   };
 
   // Array to store any metrics that do not meet the defined threshold
@@ -141,11 +141,11 @@ async function convertCoverage() {
   console.log(`Functions:  ${summary.functions.pct}%`);
   console.log(`Branches:   ${summary.branches.pct}%`);
 
-    // If any metrics fall below the required threshold
+  // If any metrics fall below the required threshold
   if (belowThreshold.length > 0) {
     console.error('\nX Coverage threshold NOT met:');
     // Print each failing metric and its coverage percentage
-    belowThreshold.forEach(msg => console.error(`  - ${msg}`));
+    belowThreshold.forEach((msg) => console.error(`  - ${msg}`));
     // Set exit code to 1 to indicate failure (useful for CI/CD pipelines)
     process.exitCode = 1;
   } else {

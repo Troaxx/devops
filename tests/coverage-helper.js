@@ -3,7 +3,6 @@ const path = require('path');
 
 const COVERAGE_DIR = path.join(__dirname, '..', 'coverage', 'playwright');
 
-
 let allCoverage = [];
 
 /**
@@ -27,8 +26,8 @@ async function stopCoverage(page) {
   if (page.coverage) {
     const coverage = await page.coverage.stopJSCoverage();
     // Filter to only include our source files
-    const filtered = coverage.filter(entry =>
-      entry.url.includes('/js/') && !entry.url.includes('node_modules')
+    const filtered = coverage.filter(
+      (entry) => entry.url.includes('/js/') && !entry.url.includes('node_modules'),
     );
     allCoverage.push(...filtered);
   }
@@ -68,5 +67,5 @@ module.exports = {
   startCoverage,
   stopCoverage,
   saveCoverageReport,
-  resetCoverage
+  resetCoverage,
 };

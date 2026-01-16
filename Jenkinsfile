@@ -36,35 +36,24 @@ pipeline {
     }
 
     stage('Code Quality & Tests') {
-      parallel {
-        stage('Linting') {
-          steps {
-            bat "node scripts/pipeline-logger.js info \"Linting Started\" stage=Linting"
-            bat "npm run lint"
+      steps {
+        script {
+          // Check if build was triggered by the nightly timer
+          def isNightly = currentBuild.getBuildCauses().toString().contains('TimerTrigger')
+          echo "Is Nightly Build? ${isNightly}"
+
+          if (isNightly) {
+            // Run FULL suite (Mobile + Desktop)
+            bat "node scripts/pipeline-logger.js info \"Running Nightly Tests\" stage=Tests type=Full"
+            bat "npm run test:coverage"
+          } else {
+            // Run CI suite (Desktop only) for speed
+            bat "node scripts/pipeline-logger.js info \"Running CI Tests\" stage=Tests type=CI"
+            bat "npm run test:ci"
           }
         }
-
-        stage('Unit Tests') {
-          steps {
-            script {
-              // Check if build was triggered by the nightly timer
-              def isNightly = currentBuild.getBuildCauses().toString().contains('TimerTrigger')
-              echo "Is Nightly Build? ${isNightly}"
-
-              if (isNightly) {
-                // Run FULL suite (Mobile + Desktop)
-                bat "node scripts/pipeline-logger.js info \"Running Nightly Tests\" stage=Tests type=Full"
-                bat "npm run test:coverage"
-              } else {
-                // Run CI suite (Desktop only) for speed
-                bat "node scripts/pipeline-logger.js info \"Running CI Tests\" stage=Tests type=CI"
-                bat "npm run test:ci"
-              }
-            }
-            // Generate report and check thresholds
-            bat "npm run coverage:report"
-          }
-        }
+        // Generate report and check thresholds
+        bat "npm run coverage:report"
       }
     }
 

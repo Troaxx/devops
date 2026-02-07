@@ -1,0 +1,11 @@
+# Ignore Helm charts as they use Go templates which are invalid YAML for Prettier
+helm/
+
+# Standard ignores
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.env

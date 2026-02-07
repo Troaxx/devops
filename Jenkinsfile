@@ -79,13 +79,8 @@ pipeline {
 
     stage('Deploy to Kubernetes') {
       steps {
-        bat "node scripts/pipeline-logger.js info \"Deploying to Kubernetes\" stage=Deploy"
-        powershell '''
-          (Get-Content deployment.yaml) `
-            -replace "{{BUILD_NUMBER}}", "$env:BUILD_NUMBER" |
-          kubectl apply -f -
-        '''
-        bat "kubectl apply -f service.yaml"
+        bat "node scripts/pipeline-logger.js info \"Deploying to Kubernetes with Helm\" stage=Deploy"
+        bat "helm upgrade --install devops-project ./helm/devops-project --set image.tag=%BUILD_NUMBER%"
       }
     }
 

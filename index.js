@@ -48,7 +48,6 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
-
 const server = app.listen(PORT, function () {
   const address = server.address();
   const baseUrl = `http://${

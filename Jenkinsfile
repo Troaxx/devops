@@ -80,7 +80,7 @@ pipeline {
     stage('Deploy to Kubernetes') {
       steps {
         bat "node scripts/pipeline-logger.js info \"Deploying to Kubernetes with Helm\" stage=Deploy"
-        bat "helm upgrade --install devops-project ./helm/devops-project --set image.tag=%BUILD_NUMBER% --atomic --timeout 120s"
+        bat "helm upgrade --install devops-project ./helm/devops-project --set image.tag=%BUILD_NUMBER% -rollback-on-failure --timeout 120s"
       }
     }
 

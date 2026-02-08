@@ -48,7 +48,6 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
-throw new Error("something went wrong")
 
 const server = app.listen(PORT, function () {
   const address = server.address();

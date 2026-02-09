@@ -1,5 +1,5 @@
 //for demo
-throw new Error("Simulated Failure for Helm Rollback Test");
+// throw new Error("Simulated Failure for Helm Rollback Test");
 // kubectl get pods,svc,deployments
 // minikube delete
 // minikube start --ports=127.0.0.1:30080:30080

@@ -1,4 +1,4 @@
-throw new Error("Simulated Failure for Helm Rollback Test");
+//throw new Error("Simulated Failure for Helm Rollback Test");
 const express = require('express');
 const path = require('path');
 

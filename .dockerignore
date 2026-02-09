@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Testing
+__tests__
+coverage
+test-results
+playwright-report
+e2e
+
+# Development
+.git
+.gitignore
+.github
+*.md
+
+# IDE
+.vscode
+.idea
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Environment files
+.env
+.env.local
+
+# Temporary
+tmp
+temp
+*.tmp
+
+# Documentation
+docs/
+screenshots/
+
+# CI/CD configs (not needed in container)
+jenkins/
+k8s/

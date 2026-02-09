@@ -33,8 +33,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Chess Club Ranking System running on http://localhost:${PORT}`);
-    console.log(`Server started at ${new Date().toLocaleString()}`);
-});
+// Start server only if not being required for testing
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Chess Club Ranking System running on http://localhost:${PORT}`);
+        console.log(`Server started at ${new Date().toLocaleString()}`);
+    });
+}
+
+// Export app for testing
+module.exports = app;

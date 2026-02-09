@@ -147,3 +147,7 @@ function showUpdateMessage(form, message, type) {
         }, 5000);
     }
 }
+
+// Expose functions to window for HTML onclick handlers and testing
+window.logoutUpdate = logoutUpdate;
+window.showUpdateMessage = showUpdateMessage;

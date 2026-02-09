@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" modified="2026-01-13T00:00:00.000Z" agent="5.0" version="24.0.0">
+  <diagram name="Multi-Browser Flow" id="multi-browser-flow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Playwright Multi-Browser Testing Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="350" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Test Script -->
+        <mxCell id="test-script" value="Test Script&#xa;e2e/gengyue-update.spec.js&#xa;18 test scenarios" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="80" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Playwright Config -->
+        <mxCell id="pw-config" value="playwright.config.js&#xa;Projects: 3 browsers&#xa;Parallel workers: 12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="310" y="180" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from script to config -->
+        <mxCell id="arrow-script-config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;" edge="1" parent="1" source="test-script" target="pw-config">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Browser 1: Chromium -->
+        <mxCell id="browser1" value="Chromium&#xa;(Desktop Chrome)&#xa;1280×720" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="browser1-run" value="18 tests running" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Browser 2: Firefox -->
+        <mxCell id="browser2" value="Firefox&#xa;(Desktop Firefox)&#xa;1280×720" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="280" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="browser2-run" value="18 tests running" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Browser 3: Mobile Chrome -->
+        <mxCell id="browser3" value="Mobile Chrome&#xa;(Pixel 5)&#xa;393×851" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="580" y="280" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="browser3-run" value="18 tests running" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="580" y="360" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from config to browsers -->
+        <mxCell id="arrow-config-b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0.5;entryY=0;" edge="1" parent="1" source="pw-config" target="browser1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-config-b2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fillColor=#ffe6cc;strokeColor=#d79b00;entryX=0.5;entryY=0;" edge="1" parent="1" source="pw-config" target="browser2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-config-b3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;entryX=0.5;entryY=0;" edge="1" parent="1" source="pw-config" target="browser3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Test Results -->
+        <mxCell id="result1" value="✓ 18 passed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="115" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="result2" value="✓ 18 passed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="355" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="result3" value="✓ 18 passed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="595" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from runs to results -->
+        <mxCell id="arrow-run1-result1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#82b366;" edge="1" parent="1" source="browser1-run" target="result1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-run2-result2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#82b366;" edge="1" parent="1" source="browser2-run" target="result2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-run3-result3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#82b366;" edge="1" parent="1" source="browser3-run" target="result3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Aggregated Result -->
+        <mxCell id="aggregate" value="Total: 54 tests passed&#xa;(18 scenarios × 3 browsers)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="500" width="280" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from results to aggregate -->
+        <mxCell id="arrow-r1-agg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="result1" target="aggregate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-r2-agg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="result2" target="aggregate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-r3-agg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="result3" target="aggregate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Failure Artifacts -->
+        <mxCell id="artifacts-box" value="On Test Failure" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;startSize=30" vertex="1" parent="1">
+          <mxGeometry x="80" y="580" width="670" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="artifact1" value="📸 Screenshot&#xa;test-failed.png" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#b85450;fontSize=10" vertex="1" parent="artifacts-box">
+          <mxGeometry x="20" y="50" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="artifact2" value="🎥 Video&#xa;video.webm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#b85450;fontSize=10" vertex="1" parent="artifacts-box">
+          <mxGeometry x="170" y="50" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="artifact3" value="🔍 Trace&#xa;trace.zip" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#b85450;fontSize=10" vertex="1" parent="artifacts-box">
+          <mxGeometry x="320" y="50" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="artifact4" value="📋 Logs&#xa;console + network" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#b85450;fontSize=10" vertex="1" parent="artifacts-box">
+          <mxGeometry x="470" y="50" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Parallel Execution Note -->
+        <mxCell id="note-parallel" value="⚡ Parallel Execution: All browsers run simultaneously using 12 workers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="80" y="730" width="670" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note-time" value="⏱️ Total Execution Time: ~30 seconds (vs ~90s if sequential)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="80" y="770" width="670" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,2001 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\gengy\\Desktop\\学习资料\\TP year2.2\\DEVops\\chess-club-ranking\\playwright.config.js",
+    "rootDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 12
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 12
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 12
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 12
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "C:/Users/gengy/Desktop/学习资料/TP year2.2/DEVops/chess-club-ranking/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 12,
+    "webServer": {
+      "command": "npm start",
+      "url": "http://localhost:5000",
+      "timeout": 120000,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "gengyue-update.spec.js",
+      "file": "gengyue-update.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Gengyue Frontend - UPDATE Feature",
+          "file": "gengyue-update.spec.js",
+          "line": 21,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Login Form Functionality",
+              "file": "gengyue-update.spec.js",
+              "line": 24,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should display error message when student ID is empty",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 2167,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.409Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-3e428be63b4f220a32b6",
+                  "file": "gengyue-update.spec.js",
+                  "line": 26,
+                  "column": 5
+                },
+                {
+                  "title": "should call /api/login endpoint with correct student ID",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 1,
+                          "status": "passed",
+                          "duration": 2356,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.410Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-2d64fe4765c66b47b1ed",
+                  "file": "gengyue-update.spec.js",
+                  "line": 48,
+                  "column": 5
+                },
+                {
+                  "title": "should show update form and populate data on successful login",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 2,
+                          "parallelIndex": 2,
+                          "status": "passed",
+                          "duration": 2594,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.440Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-63a5691a597610b3e898",
+                  "file": "gengyue-update.spec.js",
+                  "line": 69,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message when login fails with 404",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 3,
+                          "parallelIndex": 3,
+                          "status": "passed",
+                          "duration": 2603,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.438Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-7cf6dfdf46b53ce22466",
+                  "file": "gengyue-update.spec.js",
+                  "line": 108,
+                  "column": 5
+                },
+                {
+                  "title": "should handle network error during login",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 4,
+                          "parallelIndex": 4,
+                          "status": "passed",
+                          "duration": 2862,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.452Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-112be21f5a1573a970b8",
+                  "file": "gengyue-update.spec.js",
+                  "line": 125,
+                  "column": 5
+                },
+                {
+                  "title": "should trim whitespace from student ID input",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 5,
+                          "parallelIndex": 5,
+                          "status": "passed",
+                          "duration": 2528,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.435Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-11cdcf1c181879f1ce30",
+                  "file": "gengyue-update.spec.js",
+                  "line": 144,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message when student ID is empty",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 12,
+                          "parallelIndex": 4,
+                          "status": "passed",
+                          "duration": 3802,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:15.919Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-56e86bba6077cf476aec",
+                  "file": "gengyue-update.spec.js",
+                  "line": 26,
+                  "column": 5
+                },
+                {
+                  "title": "should call /api/login endpoint with correct student ID",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 13,
+                          "parallelIndex": 6,
+                          "status": "passed",
+                          "duration": 3720,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:15.980Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-b47fa5da042eb90cd5cc",
+                  "file": "gengyue-update.spec.js",
+                  "line": 48,
+                  "column": 5
+                },
+                {
+                  "title": "should show update form and populate data on successful login",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 14,
+                          "parallelIndex": 10,
+                          "status": "passed",
+                          "duration": 5065,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:16.061Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-439bc73a5591e5e8a8d9",
+                  "file": "gengyue-update.spec.js",
+                  "line": 69,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message when login fails with 404",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 15,
+                          "parallelIndex": 9,
+                          "status": "passed",
+                          "duration": 4201,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:16.033Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-2da5f81d1e0f313d72e7",
+                  "file": "gengyue-update.spec.js",
+                  "line": 108,
+                  "column": 5
+                },
+                {
+                  "title": "should handle network error during login",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 16,
+                          "parallelIndex": 8,
+                          "status": "passed",
+                          "duration": 4837,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:16.387Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-09ac2f15c72d9161a2bb",
+                  "file": "gengyue-update.spec.js",
+                  "line": 125,
+                  "column": 5
+                },
+                {
+                  "title": "should trim whitespace from student ID input",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 17,
+                          "parallelIndex": 7,
+                          "status": "passed",
+                          "duration": 3436,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:16.488Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-3113494feaf1370f99df",
+                  "file": "gengyue-update.spec.js",
+                  "line": 144,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message when student ID is empty",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 24,
+                          "parallelIndex": 5,
+                          "status": "passed",
+                          "duration": 2768,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:28.344Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-bd7c8a87c21c38cb96b4",
+                  "file": "gengyue-update.spec.js",
+                  "line": 26,
+                  "column": 5
+                },
+                {
+                  "title": "should call /api/login endpoint with correct student ID",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 25,
+                          "parallelIndex": 6,
+                          "status": "passed",
+                          "duration": 2514,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:28.472Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-af4d26918ff0e3f8fcec",
+                  "file": "gengyue-update.spec.js",
+                  "line": 48,
+                  "column": 5
+                },
+                {
+                  "title": "should show update form and populate data on successful login",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 26,
+                          "parallelIndex": 4,
+                          "status": "passed",
+                          "duration": 2565,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:28.750Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-6abf25618fc08d0c4ee5",
+                  "file": "gengyue-update.spec.js",
+                  "line": 69,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message when login fails with 404",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 27,
+                          "parallelIndex": 2,
+                          "status": "passed",
+                          "duration": 2706,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:28.862Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-53b4c70ad9e99e864185",
+                  "file": "gengyue-update.spec.js",
+                  "line": 108,
+                  "column": 5
+                },
+                {
+                  "title": "should handle network error during login",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 28,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 2768,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:29.843Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-83d1ead7e6a4ba4b76df",
+                  "file": "gengyue-update.spec.js",
+                  "line": 125,
+                  "column": 5
+                },
+                {
+                  "title": "should trim whitespace from student ID input",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 29,
+                          "parallelIndex": 3,
+                          "status": "passed",
+                          "duration": 2497,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:30.242Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-0765b0c64ca4770ffcf3",
+                  "file": "gengyue-update.spec.js",
+                  "line": 144,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "Update Form Functionality",
+              "file": "gengyue-update.spec.js",
+              "line": 167,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should display error when rating fields are empty",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 6,
+                          "parallelIndex": 6,
+                          "status": "passed",
+                          "duration": 2915,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.460Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-e50205160feb7cfe0672",
+                  "file": "gengyue-update.spec.js",
+                  "line": 183,
+                  "column": 5
+                },
+                {
+                  "title": "should call PUT endpoint with correct data on successful update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 7,
+                          "parallelIndex": 7,
+                          "status": "passed",
+                          "duration": 3432,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.452Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-ec1a1c10ca616a616ca9",
+                  "file": "gengyue-update.spec.js",
+                  "line": 209,
+                  "column": 5
+                },
+                {
+                  "title": "should update displayed current scores after successful update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 8,
+                          "parallelIndex": 8,
+                          "status": "passed",
+                          "duration": 3508,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.471Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-1c64d5f28be2f9543a60",
+                  "file": "gengyue-update.spec.js",
+                  "line": 237,
+                  "column": 5
+                },
+                {
+                  "title": "should display success message after update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 9,
+                          "status": "passed",
+                          "duration": 3235,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.469Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-10eaa1285b9eb85120b5",
+                  "file": "gengyue-update.spec.js",
+                  "line": 258,
+                  "column": 5
+                },
+                {
+                  "title": "should handle network error during update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 10,
+                          "parallelIndex": 10,
+                          "status": "passed",
+                          "duration": 3194,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.514Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-158ea564ceff17c0330e",
+                  "file": "gengyue-update.spec.js",
+                  "line": 277,
+                  "column": 5
+                },
+                {
+                  "title": "should display error when rating fields are empty",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 18,
+                          "parallelIndex": 1,
+                          "status": "passed",
+                          "duration": 3826,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:16.999Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-5caa1c609ae052d70029",
+                  "file": "gengyue-update.spec.js",
+                  "line": 183,
+                  "column": 5
+                },
+                {
+                  "title": "should call PUT endpoint with correct data on successful update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 19,
+                          "parallelIndex": 2,
+                          "status": "passed",
+                          "duration": 3418,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:17.003Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-311c7f5ebdc5c090afe9",
+                  "file": "gengyue-update.spec.js",
+                  "line": 209,
+                  "column": 5
+                },
+                {
+                  "title": "should update displayed current scores after successful update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 20,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 4548,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:17.131Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-4b39620b858c662620d0",
+                  "file": "gengyue-update.spec.js",
+                  "line": 237,
+                  "column": 5
+                },
+                {
+                  "title": "should display success message after update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 21,
+                          "parallelIndex": 5,
+                          "status": "passed",
+                          "duration": 3816,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:17.177Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-0b110070cd0a38997550",
+                  "file": "gengyue-update.spec.js",
+                  "line": 258,
+                  "column": 5
+                },
+                {
+                  "title": "should handle network error during update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 22,
+                          "parallelIndex": 11,
+                          "status": "passed",
+                          "duration": 5116,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:18.720Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-fa0f60251c19545d9720",
+                  "file": "gengyue-update.spec.js",
+                  "line": 277,
+                  "column": 5
+                },
+                {
+                  "title": "should display error when rating fields are empty",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 30,
+                          "parallelIndex": 9,
+                          "status": "passed",
+                          "duration": 3067,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.032Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-6ce729345e3ae6bd2377",
+                  "file": "gengyue-update.spec.js",
+                  "line": 183,
+                  "column": 5
+                },
+                {
+                  "title": "should call PUT endpoint with correct data on successful update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 31,
+                          "parallelIndex": 1,
+                          "status": "passed",
+                          "duration": 3181,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.119Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-7a78239bbf2825ab1436",
+                  "file": "gengyue-update.spec.js",
+                  "line": 209,
+                  "column": 5
+                },
+                {
+                  "title": "should update displayed current scores after successful update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 32,
+                          "parallelIndex": 8,
+                          "status": "passed",
+                          "duration": 3043,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.579Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-cd0ddfd129649239000a",
+                  "file": "gengyue-update.spec.js",
+                  "line": 237,
+                  "column": 5
+                },
+                {
+                  "title": "should display success message after update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 33,
+                          "parallelIndex": 10,
+                          "status": "passed",
+                          "duration": 3037,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.817Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-406a2e64703f462eb213",
+                  "file": "gengyue-update.spec.js",
+                  "line": 258,
+                  "column": 5
+                },
+                {
+                  "title": "should handle network error during update",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 34,
+                          "parallelIndex": 11,
+                          "status": "passed",
+                          "duration": 2971,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:32.186Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-98b6100ecfcb8410de42",
+                  "file": "gengyue-update.spec.js",
+                  "line": 277,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "Logout Functionality",
+              "file": "gengyue-update.spec.js",
+              "line": 300,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should reset to login form on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 11,
+                          "parallelIndex": 11,
+                          "status": "passed",
+                          "duration": 2610,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:08.538Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-9f61441cf9713be39a70",
+                  "file": "gengyue-update.spec.js",
+                  "line": 314,
+                  "column": 5
+                },
+                {
+                  "title": "should clear forms on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 1,
+                          "status": "passed",
+                          "duration": 2034,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:13.190Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-eddc5263cf72cafe2f56",
+                  "file": "gengyue-update.spec.js",
+                  "line": 328,
+                  "column": 5
+                },
+                {
+                  "title": "should hide messages on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 1956,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:13.337Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-011e719d6a5c3a80b4a4",
+                  "file": "gengyue-update.spec.js",
+                  "line": 342,
+                  "column": 5
+                },
+                {
+                  "title": "should reset to login form on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 23,
+                          "parallelIndex": 3,
+                          "status": "passed",
+                          "duration": 4201,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:22.166Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-fcca67e49ff6f8bebff4",
+                  "file": "gengyue-update.spec.js",
+                  "line": 314,
+                  "column": 5
+                },
+                {
+                  "title": "should clear forms on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 18,
+                          "parallelIndex": 1,
+                          "status": "passed",
+                          "duration": 2142,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:22.478Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-efb57380cd5f940dbf3a",
+                  "file": "gengyue-update.spec.js",
+                  "line": 328,
+                  "column": 5
+                },
+                {
+                  "title": "should hide messages on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 21,
+                          "parallelIndex": 5,
+                          "status": "passed",
+                          "duration": 2045,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:23.052Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-91c421121fd332f53593",
+                  "file": "gengyue-update.spec.js",
+                  "line": 342,
+                  "column": 5
+                },
+                {
+                  "title": "should reset to login form on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 25,
+                          "parallelIndex": 6,
+                          "status": "passed",
+                          "duration": 2653,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.185Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-95438e00ebca9d0099b0",
+                  "file": "gengyue-update.spec.js",
+                  "line": 314,
+                  "column": 5
+                },
+                {
+                  "title": "should clear forms on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 24,
+                          "parallelIndex": 5,
+                          "status": "passed",
+                          "duration": 2741,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.304Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-0e2a5a00c0e02e7ec190",
+                  "file": "gengyue-update.spec.js",
+                  "line": 328,
+                  "column": 5
+                },
+                {
+                  "title": "should hide messages on logout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 35,
+                          "parallelIndex": 7,
+                          "status": "passed",
+                          "duration": 2594,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:34.512Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-91f7364b2decc5d12a0b",
+                  "file": "gengyue-update.spec.js",
+                  "line": 342,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "Message Display Function",
+              "file": "gengyue-update.spec.js",
+              "line": 364,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should display success message correctly",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 2,
+                          "parallelIndex": 2,
+                          "status": "passed",
+                          "duration": 1654,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:13.601Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-4d76f96dca0a1d73dd6c",
+                  "file": "gengyue-update.spec.js",
+                  "line": 366,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message correctly",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 5,
+                          "parallelIndex": 5,
+                          "status": "passed",
+                          "duration": 1669,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:13.660Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-2cadf87b9ad8acddefd2",
+                  "file": "gengyue-update.spec.js",
+                  "line": 382,
+                  "column": 5
+                },
+                {
+                  "title": "should auto-hide success messages after timeout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 3,
+                          "parallelIndex": 3,
+                          "status": "passed",
+                          "duration": 6438,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:13.725Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-25d4f280b793bf574baa",
+                  "file": "gengyue-update.spec.js",
+                  "line": 402,
+                  "column": 5
+                },
+                {
+                  "title": "should not auto-hide error messages",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 11,
+                          "parallelIndex": 11,
+                          "status": "passed",
+                          "duration": 3298,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:13.792Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-eae7858c9c42b85cd57a",
+                  "file": "gengyue-update.spec.js",
+                  "line": 421,
+                  "column": 5
+                },
+                {
+                  "title": "should display success message correctly",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 13,
+                          "parallelIndex": 6,
+                          "status": "passed",
+                          "duration": 1675,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:23.533Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-eec5d07f3140ada169ae",
+                  "file": "gengyue-update.spec.js",
+                  "line": 366,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message correctly",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 19,
+                          "parallelIndex": 2,
+                          "status": "passed",
+                          "duration": 1762,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:23.819Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-b5f81d9e920841bf2e62",
+                  "file": "gengyue-update.spec.js",
+                  "line": 382,
+                  "column": 5
+                },
+                {
+                  "title": "should auto-hide success messages after timeout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 17,
+                          "parallelIndex": 7,
+                          "status": "passed",
+                          "duration": 6905,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:24.463Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-1107c265f0fe7aed5c78",
+                  "file": "gengyue-update.spec.js",
+                  "line": 402,
+                  "column": 5
+                },
+                {
+                  "title": "should not auto-hide error messages",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [
+                        {
+                          "workerIndex": 18,
+                          "parallelIndex": 1,
+                          "status": "passed",
+                          "duration": 3591,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:24.642Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-e2d894a929f31c96810d",
+                  "file": "gengyue-update.spec.js",
+                  "line": 421,
+                  "column": 5
+                },
+                {
+                  "title": "should display success message correctly",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 26,
+                          "parallelIndex": 4,
+                          "status": "passed",
+                          "duration": 1846,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.526Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-fc9554e3b81198d8e306",
+                  "file": "gengyue-update.spec.js",
+                  "line": 366,
+                  "column": 5
+                },
+                {
+                  "title": "should display error message correctly",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 27,
+                          "parallelIndex": 2,
+                          "status": "passed",
+                          "duration": 1863,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:31.820Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-a716d15ffa1ce0abb9a4",
+                  "file": "gengyue-update.spec.js",
+                  "line": 382,
+                  "column": 5
+                },
+                {
+                  "title": "should auto-hide success messages after timeout",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 28,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 6509,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:32.814Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-c1ecb1773bf2a57111b7",
+                  "file": "gengyue-update.spec.js",
+                  "line": 402,
+                  "column": 5
+                },
+                {
+                  "title": "should not auto-hide error messages",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "mobile-chrome",
+                      "projectName": "mobile-chrome",
+                      "results": [
+                        {
+                          "workerIndex": 29,
+                          "parallelIndex": 3,
+                          "status": "passed",
+                          "duration": 3429,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-01-16T02:00:32.937Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1056a897716376dfb9c2-7d812b26a9a8102b07c7",
+                  "file": "gengyue-update.spec.js",
+                  "line": 421,
+                  "column": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-01-16T02:00:05.317Z",
+    "duration": 34472.708999999995,
+    "expected": 54,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

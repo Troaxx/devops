@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Test Architecture" id="test-architecture">
+    <mxGraphModel dx="1200" dy="707" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frontend-layer" value="Frontend Layer (E2E)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="80" y="80" width="660" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-tool" value="Playwright" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="frontend-layer" vertex="1">
+          <mxGeometry x="20" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-target" value="Test Target:&#xa;public/js/gengyue.js&#xa;#update-section UI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;fontSize=11" parent="frontend-layer" vertex="1">
+          <mxGeometry x="140" y="35" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-browsers" value="Browsers:&#xa;✓ Chromium&#xa;✓ Firefox&#xa;✓ Mobile Chrome" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;fontSize=11" parent="frontend-layer" vertex="1">
+          <mxGeometry x="320" y="35" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-tests" value="18 scenarios&#xa;54 test runs&#xa;(18 × 3 browsers)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" parent="frontend-layer" vertex="1">
+          <mxGeometry x="480" y="35" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-examples" value="Tests: Login form, Update form, Logout, Messages" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10" parent="frontend-layer" vertex="1">
+          <mxGeometry x="20" y="100" width="620" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="api-layer" value="API Layer (Integration)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="80" y="250" width="660" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="api-tool" value="Supertest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="api-layer" vertex="1">
+          <mxGeometry x="20" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="api-target" value="Test Target:&#xa;POST /api/login&#xa;PUT /api/students/:id" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;fontSize=11" parent="api-layer" vertex="1">
+          <mxGeometry x="140" y="35" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="api-framework" value="Framework:&#xa;Express.js&#xa;HTTP Requests" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;fontSize=11" parent="api-layer" vertex="1">
+          <mxGeometry x="320" y="35" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="api-tests" value="27 tests&#xa;✓ 9 Login API&#xa;✓ 18 Update API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" parent="api-layer" vertex="1">
+          <mxGeometry x="480" y="35" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="api-examples" value="Tests: Request validation, Status codes, Response data, Error handling" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10" parent="api-layer" vertex="1">
+          <mxGeometry x="20" y="100" width="620" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-layer" value="Backend Layer (Unit)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="80" y="420" width="660" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-tool" value="Jest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" parent="backend-layer" vertex="1">
+          <mxGeometry x="20" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-target" value="Test Target:&#xa;utils/GengyueUtil.js&#xa;(3 functions)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;fontSize=11" parent="backend-layer" vertex="1">
+          <mxGeometry x="140" y="35" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-coverage" value="Coverage:&#xa;100% statements&#xa;100% branches" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;fontSize=11" parent="backend-layer" vertex="1">
+          <mxGeometry x="320" y="35" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-tests" value="20 tests&#xa;✓ 6 loginStudent&#xa;✓ 3 getStudentById&#xa;✓ 11 updateScores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1" parent="backend-layer" vertex="1">
+          <mxGeometry x="480" y="35" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-examples" value="Tests: Validation, Error handling, Edge cases, Mock fs operations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10" parent="backend-layer" vertex="1">
+          <mxGeometry x="20" y="100" width="620" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="frontend-layer" target="api-layer" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="api-layer" target="backend-layer" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -8,7 +8,7 @@ pipeline {
 
   triggers {
     pollSCM('* * * * *')
-    cron('H 0 * * *') // Run nightly at midnight (distributed load)
+    cron('H 0 * * *') // Run nightly at midnight 
   }
 
   environment {

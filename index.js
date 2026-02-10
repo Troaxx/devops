@@ -59,9 +59,8 @@ app.get('/dashboard', (req, res) => {
 
 const server = app.listen(PORT, function () {
   const address = server.address();
-  const baseUrl = `http://${
-    address.address == '::' ? 'localhost' : address.address
-  }:${address.port}`;
+  const baseUrl = `http://${address.address == '::' ? 'localhost' : address.address
+    }:${address.port}`;
   console.log(`Chess Club Ranking System at: ${baseUrl}`);
   logger.info(`Express Status at: ${baseUrl}/status`);
 });
